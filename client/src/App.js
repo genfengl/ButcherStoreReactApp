@@ -1,3 +1,4 @@
+import { Routes, Route, NavLink, Link, Outlet, useParams } from 'react-router-dom'
 import './App.css';
 
 const Header = () => {
@@ -8,6 +9,9 @@ const Header = () => {
   )
 }
 
+// const handleLoginClick = (event) => {
+// }
+
 const NavBar = () => {
   return (
     <div className="navBar">
@@ -15,8 +19,31 @@ const NavBar = () => {
         <li>Selection of Meats</li>
         <li>About Us</li>
         <li>Contact</li>
-        
+        <button onClick={LoginPage}>Login</button>
       </ul>
+    </div>
+  )
+}
+const LoginForm = () => {
+  return (
+    <form method='put'>
+      <label>Username:</label>
+      <input type='text' placeholder='Username' />
+      <br />
+      <label>Password:</label>
+      <input type='password' placeholder='Password'/>
+      <br />
+      <input type='submit' value='Login' />
+    </form>
+  )
+}
+
+const LoginPage = () => {
+  return (
+    <div>
+    <h1>Login</h1>
+    <img alt="company logo" />
+    <LoginForm />
     </div>
   )
 }
@@ -26,6 +53,7 @@ function App() {
     <div className="App">
       <Header />
       <NavBar />
+      <LoginPage />
     </div>
   );
 }
