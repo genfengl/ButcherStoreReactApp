@@ -1,4 +1,3 @@
-import { application } from 'express';
 import { Routes, Route, NavLink, Link, Outlet, useParams } from 'react-router-dom'
 import './App.css';
 
@@ -10,46 +9,40 @@ const Header = () => {
   )
 }
 
+// const handleLoginClick = (event) => {
+// }
+
 const NavBar = () => {
   return (
     <div className="navBar">
-      {/* <ul>
+      <ul>
         <li>Selection of Meats</li>
         <li>About Us</li>
         <li>Contact</li>
-      </ul> */}
-      <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
-        <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/register" element={<RegisterPage />} /> */}
-        {/* <Route path="/contact" element={<ContactPage />} /> */}
-        {/* <Route path="*" element={<NotFound />} /> */}
-      </Routes>
+        <button onClick={LoginPage}>Login</button>
+      </ul>
     </div>
   )
 }
-const LoginForm = (props) => {
-  const handleSubmit = (event) => {
-  //  res.redirect('/login') ???
-  }
+const LoginForm = () => {
   return (
-    <form>
+    <form method='put'>
       <label>Username:</label>
-      <input type='text'>Username</input>
+      <input type='text' placeholder='Username' />
       <br />
       <label>Password:</label>
-      <input type='password'>Password</input>
+      <input type='password' placeholder='Password'/>
       <br />
-      <input type='submit' onSubmit={handleSubmit}>Login</input>
+      <input type='submit' value='Login' />
     </form>
   )
 }
 
-const LoginPage = (props, LoginForm) => {
+const LoginPage = () => {
   return (
     <div>
     <h1>Login</h1>
-    <img src={props.imageURL} alt="company logo" />
+    <img alt="company logo" />
     <LoginForm />
     </div>
   )
@@ -60,6 +53,7 @@ function App() {
     <div className="App">
       <Header />
       <NavBar />
+      <LoginPage />
     </div>
   );
 }
