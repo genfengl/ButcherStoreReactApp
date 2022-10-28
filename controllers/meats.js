@@ -11,13 +11,26 @@ router.get('/api/butcher', async (req, res) => {
 })
 
 
-//Show Page
+//Show Page - Display individual Meat
 router.get('/api/butcher/:id', async (req, res) => {
     let meats = await Meat.findById(req.params.id)
     res.json(meats)
 })
 
-router.put('/api/butcher/:id', upload.single('image'), async (req, res) => {
+
+// POST Request / Create new Meat
+router.post('/api/butcher', upload.single('image'), async (req, res) => {
+    let meat = {
+      ...req.body,
+      imageURL: req.file?.path,
+    }
+    console.log(meat)
+    meat = await Meat.create(meat)
+    res.json(meat)
+  })
+
+// PUT Request / Update Meat
+  router.put('/api/butcher/:id', upload.single('image'), async (req, res) => {
     let meats = await Meat.findById(req.params.id)
 
     req.params.imageURL = req.file?.path
@@ -30,18 +43,14 @@ router.put('/api/butcher/:id', upload.single('image'), async (req, res) => {
     res.json(meats)
 
 })
-
-
-router.post('/api/butcher', upload.single('image'), async (req, res) => {
-  
-    let meat = {
-      ...req.body,
-      imageURL: req.file?.path,
-    }
-    console.log(meat)
-    meat = await Meat.create(meat)
-    res.json(meat)
+// DELETE Request / Delete Meat
+  router.delete('/api/butcher/:id', async (req, res) => {
+    let meats = await Meat.findById(req.params.id)
+    meats = await meats.remove()
+    res.json(meats)
   })
+
+
 
 
 module.exports = router
