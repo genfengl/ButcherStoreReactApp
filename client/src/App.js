@@ -1,13 +1,16 @@
 import { Routes, Route, NavLink, Link, Outlet, useParams } from 'react-router-dom'
-import './App.css';
+import { useNavigate } from 'react-router-dom'
+import Header from './components/Header'
+import Home from './components/Catalogue';
+import Beef from './components/Beef'
+import Pork from './components/Pork'
+import Poultry from './components/Poultry'
+import Seafood from './components/Seafood'
+import CarouselContainer from './components/Carousel';
 
-const Header = () => {
-  return (
-    <div className="header">
-    <h4 className="header-title">Header</h4>
-    </div>
-  )
-}
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from 'react';
+
 
 // const handleLoginClick = (event) => {
 // }
@@ -49,11 +52,31 @@ const LoginPage = () => {
 }
 
 function App() {
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    const getItems = async () => {
+      const res = await fetch('/api/butcher')
+      const data = await res.json()
+      setItems(data)
+    }
+    getItems()
+  }, [])
+
   return (
-    <div className="App">
+    <div className="container d-flex flex-column gap-3">
       <Header />
-      <NavBar />
-      <LoginPage />
+      <main>
+        <Routes>
+          <Route path='/api/butcher' element={<Home items={items} />} />
+          <Route path='/api/butcher/beef' element={<Beef />} />
+          <Route path='/api/butcher/pork' element={<Pork />} />
+          <Route path='/api/butcher/Poultry' element={<Poultry />} />
+          <Route path='/api/butcher/Seafood' element={<Seafood />} />
+        </Routes>
+      </main>
+      {/* <NavBar /> */}
+      {/* <LoginPage /> */}
     </div>
   );
 }
