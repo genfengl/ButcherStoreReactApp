@@ -4,6 +4,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const session = require('express-session')
 
+const meatController = require('./controllers/meats')
+
 const Meat = require('./models/meat')
 
 const app = express()
@@ -15,17 +17,11 @@ const dbURL = process.env.MONGODB_URL
 //   collection: 'sessions'
 // })
 
+app.use(meatController)
 
-
-
-
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
 
 mongoose.connect(dbURL, (err) => {
   console.log('Connected to db')
-  console.log(err)
 })
 
 app.listen(PORT, () => {
