@@ -16,3 +16,8 @@ app.listen(PORT, () => {
 //route
 
 
+// merge conflict testing
+
+app.get('/home', (req, res) => {
+    res.send(`Eat my ass`)
+})
