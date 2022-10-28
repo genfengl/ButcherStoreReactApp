@@ -10,3 +10,9 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log('Connected to veneer server on PORT', PORT)
   })
+
+// merge conflict testing
+
+app.get('/home', (req, res) => {
+    res.send(`Eat my ass`)
+})
