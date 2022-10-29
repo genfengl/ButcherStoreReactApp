@@ -6,6 +6,8 @@ import Beef from './components/Beef'
 import Pork from './components/Pork'
 import Poultry from './components/Poultry'
 import Seafood from './components/Seafood'
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
 import CarouselContainer from './components/Carousel';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,29 +26,6 @@ const NavBar = () => {
         <li>Contact</li>
         <button onClick={LoginPage}>Login</button>
       </ul>
-    </div>
-  )
-}
-const LoginForm = () => {
-  return (
-    <form method='put'>
-      <label>Username:</label>
-      <input type='text' placeholder='Username' />
-      <br />
-      <label>Password:</label>
-      <input type='password' placeholder='Password'/>
-      <br />
-      <input type='submit' value='Login' />
-    </form>
-  )
-}
-
-const LoginPage = () => {
-  return (
-    <div>
-    <h1>Login</h1>
-    <img alt="company logo" />
-    <LoginForm />
     </div>
   )
 }
@@ -73,6 +52,7 @@ function App() {
           <Route path='/api/butcher/pork' element={<Pork />} />
           <Route path='/api/butcher/Poultry' element={<Poultry />} />
           <Route path='/api/butcher/Seafood' element={<Seafood />} />
+          <Route path='/api/butcher/login' element={<LoginPage />} />
         </Routes>
       </main>
       {/* <NavBar /> */}

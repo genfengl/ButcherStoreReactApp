@@ -37,6 +37,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 // app.use(authController)
+//need to decide on auth control location for routing to Login and Register Pages, as well as connecting to the DB as well, i'll need to collab with you boys for this!
 app.use(meatController)
 
 

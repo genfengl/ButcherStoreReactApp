@@ -38,6 +38,10 @@ const Header = () => {
                         <Nav.Link as={Link} to='/api/butcher/profile'>
                             <FaUser /> Profile
                         </Nav.Link>
+                        {/* need to do Login Route */}
+                        <Nav.Link as={Link} to='/api/butcher/login'>
+                            <FaUser /> Login
+                        </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/cart' >
                             <FaShoppingCart /> Cart
                         </Nav.Link>
