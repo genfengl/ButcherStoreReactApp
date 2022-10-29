@@ -8,38 +8,41 @@ import { Link } from 'react-router-dom'
 const Header = () => {
     return (
         // set collapseOnSelect to make the NavBar collapse automatically when the user selects an item
-        <Navbar collapseOnSelect className='p-3 d-flex align-items-center' variant='light' bg='light' expand='md' sticky='top'>
+        <Navbar collapseOnSelect className='p-3' variant='light' bg='light' expand='md'>
             <Container>
                 <Navbar.Brand as={Link} to='/api/butcher'>
-                    Butcher
+                    BUTCHER
                 </Navbar.Brand>
                 {/* use aria-controls to toggle the nav within navbar.collapse using the id */}
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav' >
                     <Nav>
                         <Nav.Link as={Link} to='/api/butcher' >
-                            Home
+                            HOME
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/beef' >
-                            Beef
+                            BEEF
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/pork'>
-                            Pork
+                            PORK
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/poultry'>
-                            Poultry
+                            POULTRY
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/seafood'>
-                            Seafood
+                            LAMB
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/api/butcher/seafood'>
+                            SEAFOOD
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/search'>
-                            <FaSearch /> Search
+                            <FaSearch /> SEARCH
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/profile'>
-                            <FaUser /> Profile
+                            <FaUser /> PROFILE
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/cart' >
-                            <FaShoppingCart /> Cart
+                            <FaShoppingCart /> CART
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
