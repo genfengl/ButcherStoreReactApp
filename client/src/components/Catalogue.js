@@ -9,7 +9,7 @@ const Home = ({ items }) => {
     return (
         <>
         {/* set the columns of row according to screen size */}
-        <Row xs={1} md={2} lg={3} xl={4} className='g-3'>
+        <Row xs={2} md={2} lg={3} xl={4} className='g-3'>
             {items.map((item) => {
                 return (
                     <Col key={item.id}>
