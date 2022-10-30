@@ -1,7 +1,11 @@
+const handleRegisterSubmit = () => {
+    
+}
+
 
 const RegisterForm = () => {
     return (
-      <form method='put'>
+      <form method='put' onSubmit={handleRegisterSubmit}>
         <label>Username:</label>
         <input type='text' placeholder='Username' />
         <br />

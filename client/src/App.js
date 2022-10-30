@@ -7,6 +7,7 @@ import Pork from './components/Pork'
 import Poultry from './components/Poultry'
 import Seafood from './components/Seafood'
 import LoginPage from './components/LoginPage';
+import ProfilePage from './components/ProfilePage';
 import RegisterPage from './components/RegisterPage';
 import CarouselContainer from './components/Carousel';
 
@@ -16,20 +17,6 @@ import { useEffect, useState } from 'react';
 
 // const handleLoginClick = (event) => {
 // }
-
-const NavBar = () => {
-  return (
-    <div className="navBar">
-      <ul>
-        <li>Selection of Meats</li>
-        <li>About Us</li>
-        <li>Contact</li>
-        <button onClick={LoginPage}>Login</button>
-      </ul>
-    </div>
-  )
-}
-
 function App() {
   const [items, setItems] = useState([])
 
@@ -50,13 +37,14 @@ function App() {
           <Route path='/api/butcher' element={<Home items={items} />} />
           <Route path='/api/butcher/beef' element={<Beef />} />
           <Route path='/api/butcher/pork' element={<Pork />} />
-          <Route path='/api/butcher/Poultry' element={<Poultry />} />
-          <Route path='/api/butcher/Seafood' element={<Seafood />} />
+          <Route path='/api/butcher/poultry' element={<Poultry />} />
+          <Route path='/api/butcher/seafood' element={<Seafood />} />
+          {/* unsure below route does anything if no user loggedin? */}
+          if (user) { <Route path='/api/butcher/profile' element={<ProfilePage />} /> }
           <Route path='/api/butcher/login' element={<LoginPage />} />
+          <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
       </main>
-      {/* <NavBar /> */}
-      {/* <LoginPage /> */}
     </div>
   );
 }

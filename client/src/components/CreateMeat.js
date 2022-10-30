@@ -16,25 +16,53 @@ const CreateMeat = ({ posts, setPosts }) => {
 //     navigate('/')
 //   }
 
+//below potential handler?
+
+// const handleSubmit = async(event) => {
+// event.preventDefault()
+// const newMeatData = new FormData(event.target)
+// const res = await fetch('api/posts', {
+// method: 'POST',
+// body: newMeatData
+// })
+// const data = await res.json()
+// setPosts([data, ...posts])
+// res.redirect('/')
+// }
+
+
+//form data for Meat schema in models/mongoDB
   return (
     <form onSubmit={handleSubmit}>
       <input
         name="title"
         type="text"
         required
-        placeholder="Fiji"
+        placeholder="Aged Beef"
       />
       <br />
       <input
-        name="image"
+        name="imageURL"
         required
-        type="file"
+        type="text"
       />
       <br />
       <input
-        name="visitDate"
+        name="price"
         required
-        type="date"
+        type="number"
+      />
+        <br />
+      <input
+        name="stock"
+        required
+        type="number"
+      />
+        <br />
+      <input
+        name="category"
+        required
+        type="text"
       />
       <br />
       <textarea name="description"></textarea>
