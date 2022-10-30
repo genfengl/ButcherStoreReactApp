@@ -21,10 +21,9 @@ import { useEffect, useState } from 'react';
 // const handleLoginClick = (event) => {
 // }
 function App() {
-  // const [items, setItems] = useState([])
-  // const [user, setUser] = useState([])
-
   const [items, setItems] = useState([])
+  const [user, setUser] = useState([])
+
   const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
 
   const handleOffcanvasClose = () => setShowOffcanvasNav(false)
