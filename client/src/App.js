@@ -6,10 +6,13 @@ import Beef from './components/Beef'
 import Pork from './components/Pork'
 import Poultry from './components/Poultry'
 import Seafood from './components/Seafood'
+import OffcanvasNav from './components/OffcanvasNav';
 import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import RegisterPage from './components/RegisterPage';
 import Container from 'react-bootstrap/Container'
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Button from 'react-bootstrap/Button'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
@@ -19,6 +22,7 @@ import { useEffect, useState } from 'react';
 // }
 function App() {
   const [items, setItems] = useState([])
+  login-form
   const [user, setUser] = useState([])
   
   console.log(user)
@@ -36,7 +40,6 @@ function App() {
 
   return (
     <Container>
-      <Header />
       <main>
         <Routes>
           <Route path='/api/butcher' element={<Home items={items} />} />
@@ -45,8 +48,13 @@ function App() {
           <Route path='/api/butcher/poultry' element={<Poultry />} />
           <Route path='/api/butcher/seafood' element={<Seafood />} />
           {/* unsure below route does anything if no user loggedin? */}
+login-form
           if (user) { <Route path='/api/butcher/profile' element={<ProfilePage />} /> }
           <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
+=======
+          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
+          <Route path='/api/butcher/login' element={<LoginPage />} />
+main
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
       </main>
