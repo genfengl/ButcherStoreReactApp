@@ -19,6 +19,9 @@ import { useEffect, useState } from 'react';
 // }
 function App() {
   const [items, setItems] = useState([])
+  const [user, setUser] = useState([])
+  
+  console.log(user)
 
   useEffect(() => {
     const getItems = async () => {
@@ -28,6 +31,8 @@ function App() {
     }
     getItems()
   }, [])
+
+
 
   return (
     <Container>
@@ -41,7 +46,7 @@ function App() {
           <Route path='/api/butcher/seafood' element={<Seafood />} />
           {/* unsure below route does anything if no user loggedin? */}
           if (user) { <Route path='/api/butcher/profile' element={<ProfilePage />} /> }
-          <Route path='/api/butcher/login' element={<LoginPage />} />
+          <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
       </main>
