@@ -8,24 +8,26 @@ import CarouselContainer from './Carousel'
 const Home = ({ items }) => {
     return (
         <>
-        <CarouselContainer items={items} />
-        <Container>
         {/* set the columns of row according to screen size */}
-        <Row xs={1} md={2} lg={3} xl={4} className='g-4'>
+        <Row xs={1} md={2} lg={3} xl={4} className='g-3'>
             {items.map((item) => {
                 return (
                     <Col key={item.id}>
                         {/* set the height of card to 100px */}
-                        <Card className='h-100' key={item.id}>
+                        <Card className='h-100 border-0 rounded-0' key={item.id}>
                             {/* displays item.image if an imageURL exists */}
                             {item.imageURL && (
-                                <Card.Img className='h-100'
+                                <Card.Img className='mh-100 rounded-0'
                                     variant='top'
                                     src={item.imageURL ? item.imageURL : ''}
                                     alt={item.title}
+                                    style={{
+                                        height: '20vh',
+                                        objectFit: 'cover'
+                                    }}
                                 />
                             )}
-                            <Card.Body>
+                            <Card.Body className='text-center'>
                                 {/* display a message when image is unavailable */}
                                 {item.imageURL ? (
                                     ''
@@ -33,20 +35,18 @@ const Home = ({ items }) => {
                                     <Card.Title>No Image Available</Card.Title>
                                 )}
                                 {/* display title of the item */}
-                                <Card.Text className='text-muted'>{item.title}</Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
+                                <Card.Text className='lead'>{item.title}</Card.Text>
+                                <Card.Text className='text-muted'>${item.price}</Card.Text>
                                 {/* button for add to cart */}
                                 <Button variant='outline-dark'>
                                     Add to Cart
                                 </Button>
-                            </Card.Footer>
+                            </Card.Body>
                         </Card>
                     </Col>
                 )
             })}
         </Row>
-        </Container>
         </>
 
     )
