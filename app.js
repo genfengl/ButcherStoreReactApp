@@ -45,7 +45,7 @@ mongoose.connect(dbURL, (err) => {
 })
 
 app.listen(PORT, () => {
-    console.log('Connected to veneer server on PORT', PORT)
+    console.log('Connected to butcher server on PORT', PORT)
   })
 
 
