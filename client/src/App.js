@@ -1,7 +1,7 @@
 import { Routes, Route, NavLink, Link, Outlet, useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import Header from './components/Header'
-import Home from './components/Catalogue';
+import Home from './components/Home';
 import Beef from './components/Beef'
 import Pork from './components/Pork'
 import Poultry from './components/Poultry'
@@ -9,7 +9,7 @@ import Seafood from './components/Seafood'
 import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import RegisterPage from './components/RegisterPage';
-import CarouselContainer from './components/Carousel';
+import Container from 'react-bootstrap/Container'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
@@ -30,7 +30,7 @@ function App() {
   }, [])
 
   return (
-    <div className="container d-flex flex-column gap-3">
+    <Container>
       <Header />
       <main>
         <Routes>
@@ -45,7 +45,7 @@ function App() {
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
       </main>
-    </div>
+    </Container>
   );
 }
 
