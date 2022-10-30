@@ -21,11 +21,17 @@ import { useEffect, useState } from 'react';
 // const handleLoginClick = (event) => {
 // }
 function App() {
+  // const [items, setItems] = useState([])
+  // const [user, setUser] = useState([])
+
   const [items, setItems] = useState([])
-  login-form
-  const [user, setUser] = useState([])
-  
-  console.log(user)
+  const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
+
+  const handleOffcanvasClose = () => setShowOffcanvasNav(false)
+  const handleOffcanvasShow = () => {
+    setShowOffcanvasNav(true)
+    console.log(showOffcanvasNav)
+  }
 
   useEffect(() => {
     const getItems = async () => {
@@ -40,6 +46,12 @@ function App() {
 
   return (
     <Container>
+
+<OffcanvasNav showOffcanvasNav={showOffcanvasNav} handleOffcanvasClose={handleOffcanvasClose} />
+
+<Header handleOffcanvasShow={handleOffcanvasShow} />
+
+
       <main>
         <Routes>
           <Route path='/api/butcher' element={<Home items={items} />} />
@@ -48,13 +60,10 @@ function App() {
           <Route path='/api/butcher/poultry' element={<Poultry />} />
           <Route path='/api/butcher/seafood' element={<Seafood />} />
           {/* unsure below route does anything if no user loggedin? */}
-login-form
           if (user) { <Route path='/api/butcher/profile' element={<ProfilePage />} /> }
           <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
-=======
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
           <Route path='/api/butcher/login' element={<LoginPage />} />
-main
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
       </main>
