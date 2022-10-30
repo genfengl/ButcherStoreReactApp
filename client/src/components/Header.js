@@ -35,12 +35,15 @@ const Header = () => {
                         <Nav.Link as={Link} to='/api/butcher/search'>
                             <FaSearch /> Search
                         </Nav.Link>
+                        {/* Conditional Rendering if (user) return profile, else return login & register */}
                         <Nav.Link as={Link} to='/api/butcher/profile'>
                             <FaUser /> Profile
                         </Nav.Link>
-                        {/* need to do Login Route */}
                         <Nav.Link as={Link} to='/api/butcher/login'>
                             <FaUser /> Login
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/api/butcher/register'>
+                            <FaUser /> Register
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/cart' >
                             <FaShoppingCart /> Cart

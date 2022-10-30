@@ -6,7 +6,7 @@ const RegisterPage = () => {
       <h1>Register</h1>
       <img alt="company logo" />
       <RegisterForm />
-      <p>Already a User?<a href="#">Login here</a></p>
+      <p>Already a User?<a href="./login">Login here</a></p>
       </div>
     )
   }

@@ -6,7 +6,7 @@ const LoginPage = () => {
       <h1>Login</h1>
       <img alt="company logo" />
       <LoginForm />
-      <p>Not registered? <a href="#">Register here</a></p>
+      <p>Not registered? <a href="./register">Register here</a></p>
       </div>
     )
   }
