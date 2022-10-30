@@ -5,33 +5,43 @@ const User = require('../models/user')
 const router = express.Router()
 
 
-    router.post('/login', passport.authenticate('local'), (req, res) => {
-        console.log(req.body)
+
+const authenticate = (req, res, next) => {
+    const auth = passport.authenticate('local', (err, user, info) => {
+      if (err) next(err)
+      if (!user) res.status(401).json({ msg: 'Wrong username or password '})
+      req.logIn(user, (err) => {
+        if (err) next(err)
+        next()
+      })
+    })
+    auth(req, res, next)
+  }
+
+    router.post('/login', authenticate, (req, res) => {
         console.log('logged in', req.user.username)
         const { id, username } = req.user
-        res.json({ id, username })
-        
-    })
+        res.json({ id, username })     
+})
 
     router.post('/register', async (req, res) => {
-        console.log(req.body)
         const { username, password } = req.body
-        
-        User.findOne({ username: username }).then((user) => {
-            if (user) {
-                return res.status(400).json({ msg: "User already registered" })
-            } else {
-                const newUser = new User({ 
+            try {
+                const newUser = await User.register(
+                new User({ 
                     username: username,
-                    password: password,
-                })
+                }), password
+                )
                 newUser.save()
                 return res.status(200).json({ msg: newUser })
+            } catch (err) {
+                res.status(401).json({
+                    message: 'User not created',
+                    error: err.message
+                })
             }
-        })
-
-    })
-
+})
+    
 
     router.post('/logout', (req, res) => {
         req.logout(() => {
