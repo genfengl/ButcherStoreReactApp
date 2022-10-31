@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel'
 const CarouselContainer = ({ items }) => {
     return (
         <Carousel style={{ minHeight: '30vh' }}>
-            {items.map((item) => {
+            {items?.map((item) => {
                 return (
                     <Carousel.Item key={item._id} style={{ maxHeight: '30vh' }}>
                         <img

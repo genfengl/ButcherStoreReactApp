@@ -6,12 +6,12 @@ import Button from 'react-bootstrap/Button'
 import CarouselContainer from './Carousel'
 import { Link } from 'react-router-dom'
 
-const Home = ({ items }) => {
+const Catalogue = ({ items, user }) => {
     return (
         <>
         {/* set the columns of row according to screen size */}
         <Row xs={2} md={2} lg={3} xl={4} className='g-3'>
-            {items.map((item) => {
+            {items?.map((item) => {
                 return (
                     <Col key={item._id} >
                         {/* set the height of card to 100px */}
@@ -40,10 +40,16 @@ const Home = ({ items }) => {
                                 <Card.Text className='lead'>{item.title}</Card.Text>
                                 <Card.Text className='text-muted'>${item.price}</Card.Text>
                                 {/* button for add to cart */}
-                                {}
-                                <Button variant='outline-dark'>
+                                { user?.isAdmin === true ? ( <>
+                                <Link to={`/api/butcher/edit/${item._id}`} ><Button>Edit</Button></Link>
+                                <Button variant="danger" >Delete</Button>
+                                </>
+                                ) : (
+                                    <Button variant='outline-dark'>
                                     Add to Cart
                                 </Button>
+                                )}
+                                
                             </Card.Body>
                         </Card>
                     </Col>
@@ -55,4 +61,4 @@ const Home = ({ items }) => {
     )
 }
 
-export default Home
+export default Catalogue
