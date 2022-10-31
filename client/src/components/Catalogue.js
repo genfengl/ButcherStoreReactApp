@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 import CarouselContainer from './Carousel'
 import { Link } from 'react-router-dom'
 
-const Home = ({ items }) => {
+const Catalogue = ({ items }) => {
     return (
         <>
         {/* set the columns of row according to screen size */}
@@ -40,7 +40,7 @@ const Home = ({ items }) => {
                                 <Card.Text className='lead'>{item.title}</Card.Text>
                                 <Card.Text className='text-muted'>${item.price}</Card.Text>
                                 {/* button for add to cart */}
-                                {}
+                                    
                                 <Button variant='outline-dark'>
                                     Add to Cart
                                 </Button>
@@ -55,4 +55,4 @@ const Home = ({ items }) => {
     )
 }
 
-export default Home
+export default Catalogue
