@@ -56,7 +56,7 @@ function App() {
 
       <main>
         <Routes>
-          <Route path='/api/butcher' element={<Home items={items} user={user} />} />
+          <Route path='/api/butcher' element={<Home items={items} setItems={setItems} user={user} />} />
           <Route path='/api/butcher/beef' element={<Beef items={items} />} />
           <Route path='/api/butcher/pork' element={<Pork items={items} />} />
           <Route path='/api/butcher/poultry' element={<Poultry items={items} />} />
@@ -64,7 +64,7 @@ function App() {
           <Route path='/api/butcher/seafood' element={<Seafood items={items} />} />
           <Route path='/api/butcher/:id' element={<Show />} />
           <Route path='/api/butcher/search' element={<Search />} />
-          <Route path='/api/butcher/edit/:id' element={<Edit />} />
+          <Route path='/api/butcher/edit/:id' element={<Edit items={items} setItems={setItems} />} />
           {/* unsure below route does anything if no user loggedin? */}
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
           <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
