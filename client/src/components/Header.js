@@ -40,19 +40,6 @@ const Header = ({ handleOffcanvasShow, user }) => {
                         <Nav.Link as={Link} to='/api/butcher/seafood'>
                             Seafood
                         </Nav.Link>
-                        {/* Maybe move the login and register links to the profile page?
-                        if (!user) show login page with register option, if (user) show profile page */}
-                        { user ? ( 
-                            ''
-                        ) : ( <>
-                            <Nav.Link as={Link} to='/api/butcher/login'>
-                            L
-                        </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/register'>
-                            Reg
-                        </Nav.Link>
-                        </>
-                        )}
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Brand className='order-md-first me-0 me-md-3' as={Link} to='/api/butcher'>
@@ -62,13 +49,14 @@ const Header = ({ handleOffcanvasShow, user }) => {
                     <Nav.Link as={Link} to='/api/butcher/search'>
                         <FaSearch />
                     </Nav.Link>
-                    { user ? (
-                    <Nav.Link className="d-flex flex-row gap-2 align-items-center" as={Link} to='/api/butcher/profile'>
+
+                    {user ? (<Nav.Link as={Link} to='/api/butcher/profile'>
                         <FaUser />
-                          {` ${user.username}`}
-                    </Nav.Link>
-                    ) : '' }
-                    
+                        {" " + user.username}
+                    </Nav.Link>) :
+                        (<Nav.Link as={Link} to='/api/butcher/login'>
+                            <FaUser />
+                        </Nav.Link>)}
                     <Nav.Link as={Link} to='/api/butcher/cart' >
                         <FaShoppingCart />
                     </Nav.Link>
