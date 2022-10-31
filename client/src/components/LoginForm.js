@@ -37,7 +37,8 @@ const handleLoginSubmit = async (event) => {
     } else if (res.status === 200) {
       setError(null)
       setUser(data)
-      navigate(-1)
+      console.log(data)
+      navigate("/api/butcher")
     }
 
     setLoginFields(initialState)
