@@ -10,6 +10,7 @@ const initialState = {
 
 const RegisterForm = () => {
   const [registerFields, setRegisterFields] = useState(initialState)
+  const [error, setError] = useState(null)
   const navigate = useNavigate()
 
   const handleRegisterChange = (event) => {
@@ -30,11 +31,15 @@ const RegisterForm = () => {
         body: JSON.stringify(registerFields)
       })
       const data = await res.json()
-      
-      //Pass setUser down from App.js or create partial function?
-      console.log(data)
+      if (res.status === 401) {
+        setError(data)
+      } else if (res.status === 200) {
+        setError(null)
+        console.log(data)
+        // setUser(data)
+        navigate(-1)
+      }
 
-      navigate(-1)
       setRegisterFields(initialState)
   }
 
@@ -43,7 +48,7 @@ const RegisterForm = () => {
       <Form onSubmit={handleRegisterSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Username</Form.Label>
-        <Form.Control value={registerFields.username} name="username" type="text" placeholder="Enter Username" onChange={handleRegisterChange} />
+        <Form.Control maxLength={20} value={registerFields.username} name="username" type="text" placeholder="Enter Username" onChange={handleRegisterChange} />
         <Form.Text className="text-muted">
           We'll never share your password with anyone else.. or will we?
         </Form.Text>
@@ -54,7 +59,7 @@ const RegisterForm = () => {
         <Form.Control value={registerFields.password} name="password" type="password" placeholder="Password" onChange={handleRegisterChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+      { error && <p>{error.error}</p>}
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
