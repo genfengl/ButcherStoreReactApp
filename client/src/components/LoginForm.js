@@ -30,7 +30,7 @@ const handleLoginSubmit = async (event) => {
       body: JSON.stringify(loginFields) 
       
     })
-    // console.log(loginFields)
+    console.log(loginFields)
     const data = await res.json()
     if (res.status === 401) {
       setError(data)
@@ -58,7 +58,6 @@ const handleLoginSubmit = async (event) => {
         <Form.Control value={loginFields.password} name="password" type="password" placeholder="Password" onChange={handleLoginChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        { loginFields && <p>welcome back {loginFields.roles.type}</p>}
       { error && <p>Incorrect Username or Password</p>}
       </Form.Group>
       <Button variant="primary" type="submit">
