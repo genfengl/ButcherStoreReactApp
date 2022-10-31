@@ -16,7 +16,6 @@ const Show = () => {
           const res = await fetch(`/api/butcher/${id}`)
           const data = await res.json()
           setItem(data)
-          console.log(data)
         }
         getItem()
       }, [id])
@@ -32,7 +31,7 @@ const Show = () => {
                 <li>${item?.price}</li>
                 <li>{item?.description}</li>
                 <li>{item?.category}</li>
-                {item.stock === 0 ? <li>Sorry, we have no stock remaining</li> : <li>We have {item?.stock} in stock!</li>} </ul> 
+                {item?.stock === 0 ? <li>Sorry, we have no stock remaining</li> : <li>We have {item?.stock} in stock!</li>} </ul> 
                 <Button onClick={handleAddToCart} variant='outline-dark'>Add to Cart</Button>
         </div>
         </div>

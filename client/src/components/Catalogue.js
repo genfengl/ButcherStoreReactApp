@@ -12,7 +12,6 @@ const Home = ({ items }) => {
         {/* set the columns of row according to screen size */}
         <Row xs={2} md={2} lg={3} xl={4} className='g-3'>
             {items.map((item) => {
-                console.log(item)
                 return (
                     <Col key={item._id} >
                         {/* set the height of card to 100px */}
@@ -41,6 +40,7 @@ const Home = ({ items }) => {
                                 <Card.Text className='lead'>{item.title}</Card.Text>
                                 <Card.Text className='text-muted'>${item.price}</Card.Text>
                                 {/* button for add to cart */}
+                                {}
                                 <Button variant='outline-dark'>
                                     Add to Cart
                                 </Button>
