@@ -2,7 +2,7 @@
 import Catalogue from './Catalogue'
 
 
-const Beef = ({ items }) => {
+const Beef = ({ items, handleItemClick }) => {
     const beefItems = items.filter((item) => {
         return item.category === 'Beef'
     })
@@ -10,7 +10,7 @@ const Beef = ({ items }) => {
     return (
         <div>
             <h1>Beef</h1>
-            <Catalogue items={beefItems} />
+            <Catalogue items={beefItems} handleItemClick={handleItemClick} />
         </div>
     )
 }

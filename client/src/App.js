@@ -8,7 +8,8 @@ import Poultry from './components/Poultry'
 import Lamb from './components/Lamb';
 import Seafood from './components/Seafood'
 import OffcanvasNav from './components/OffcanvasNav';
-import ModalSearch from './components/ModalSearch'
+import Search from './components/Search'
+import Show from './components/Show'
 import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import RegisterPage from './components/RegisterPage';
@@ -25,8 +26,13 @@ import { useEffect, useState } from 'react';
 function App() {
   const [items, setItems] = useState([])
   const [user, setUser] = useState(null)
+  const [showItem, setShowItem] = useState(null)
   const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
   const [showModalSearch, setShowModalSearch] = useState(false)
+
+  const handleItemClick = (item) => {
+    setShowItem(item)
+  }
 
   const handleOffcanvasClose = () => setShowOffcanvasNav(false)
   const handleOffcanvasShow = () => setShowOffcanvasNav(true)
@@ -43,16 +49,12 @@ function App() {
     getItems()
   }, [])
 
-
-
   return (
     <Container>
       <OffcanvasNav
         showOffcanvasNav={showOffcanvasNav}
         handleOffcanvasClose={handleOffcanvasClose}
       />
-
-      <ModalSearch />
 
       <Header
         handleOffcanvasShow={handleOffcanvasShow}
@@ -63,11 +65,13 @@ function App() {
       <main>
         <Routes>
           <Route path='/api/butcher' element={<Home items={items} />} />
-          <Route path='/api/butcher/beef' element={<Beef items={items} />} />
+          <Route path='/api/butcher/beef' element={<Beef items={items} handleItemClick={handleItemClick} />} />
           <Route path='/api/butcher/pork' element={<Pork items={items} />} />
           <Route path='/api/butcher/poultry' element={<Poultry items={items} />} />
           <Route path='/api/butcher/lamb' element={<Lamb items={items} />} />
           <Route path='/api/butcher/seafood' element={<Seafood items={items} />} />
+          <Route path='/api/butcher/:id' element={<Show />} />
+          <Route path='/api/butcher/search' element={<Search />} />
           {/* unsure below route does anything if no user loggedin? */}
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
           <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
