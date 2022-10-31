@@ -5,8 +5,20 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import CarouselContainer from './Carousel'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-const Catalogue = ({ items, user }) => {
+const Catalogue = ({ items, setItems, user }) => {
+const navigate = useNavigate()
+
+    const handleDelete = async (id) => {
+        const res = await fetch(`/api/butcher/${id}`, { method: 'DELETE' })
+        const updatedItems = items.filter((_items) => {
+          return _items._id !== id
+        })
+        setItems(updatedItems)
+        navigate('/api/butcher')
+      }
+
     return (
         <>
         {/* set the columns of row according to screen size */}
@@ -42,7 +54,7 @@ const Catalogue = ({ items, user }) => {
                                 {/* button for add to cart */}
                                 { user?.isAdmin === true ? ( <>
                                 <Link to={`/api/butcher/edit/${item._id}`} ><Button>Edit</Button></Link>
-                                <Button variant="danger" >Delete</Button>
+                                <Button variant="danger" onClick={() => handleDelete(item._id) }>Delete</Button>
                                 </>
                                 ) : (
                                     <Button variant='outline-dark'>

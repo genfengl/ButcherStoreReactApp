@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const Edit = () => {
+const Edit = ({ items, setItems }) => {
   const [item, setItem] = useState(null)
   const navigate = useNavigate()
   const { id } = useParams()
@@ -20,7 +20,6 @@ const Edit = () => {
     })
   }
 
-console.log(item?._id)
 
   useEffect(() => {
     const getItem = async () => {
@@ -31,6 +30,7 @@ console.log(item?._id)
     getItem()
   }, [id])
 
+  
   const handleEditSubmit = async (event) => {
     event.preventDefault()
     const res = await fetch(`/api/butcher/edit/${item?._id}`, {
@@ -38,7 +38,14 @@ console.log(item?._id)
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(item)
     })
-    // const data = await res.json()
+    const data = await res.json()
+    const updatedItems = items?.map((_item) => {
+      if (_item._id !== data._id) {
+        return _item
+      }
+      return data
+    })
+    setItems(updatedItems)
     navigate('/api/butcher')
 
   }
@@ -51,10 +58,10 @@ console.log(item?._id)
           <Form.Label>Title</Form.Label>
           <Form.Control name="title" type="text" placeholder="Title" value={item?.title} onChange={handleChange} />
         </Form.Group>
-        {/* <Form.Group className="mb-3" >
+        <Form.Group className="mb-3" >
         <Form.Label>Image</Form.Label>
         <Form.Control name='image' type="file" placeholder="Image"/>
-      </Form.Group> */}
+      </Form.Group>
         <Form.Group className="mb-3" >
           <Form.Label>Price</Form.Label>
           <Form.Control name="price" type="text" value={item?.price} onChange={handleChange} />

@@ -1,11 +1,11 @@
 import Catalogue from "./Catalogue"
 import CarouselContainer from "./Carousel"
 
-const Home = ({ items, user }) => {
+const Home = ({ items, setItems, user }) => {
     return (
         <>
         <CarouselContainer items={items} />
-        <Catalogue items={items} user={user}/>
+        <Catalogue items={items} setItems={setItems} user={user}/>
         </>
     )
 }
