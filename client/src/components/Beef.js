@@ -9,7 +9,7 @@ const Beef = ({ items, handleItemClick }) => {
 
     return (
         <div>
-            <h1>Beef</h1>
+            <div className='fs-1 fw-bold text-center p-5'>BEEF</div>
             <Catalogue items={beefItems} handleItemClick={handleItemClick} />
         </div>
     )

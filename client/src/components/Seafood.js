@@ -8,7 +8,7 @@ const Seafood = ({ items }) => {
 
     return (
         <div>
-            <h1>Seafood</h1>
+            <div className='fs-1 fw-bold text-center p-5'>SEAFOOD</div>
             <Catalogue items={seafoodItems} />
         </div>
     )

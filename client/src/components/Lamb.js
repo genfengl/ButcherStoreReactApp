@@ -8,7 +8,7 @@ const Lamb = ({ items }) => {
 
     return (
         <div>
-            <h1>Lamb</h1>
+            <div className='fs-1 fw-bold text-center p-5'>LAMB</div>
             <Catalogue items={lambItems} />
         </div>
     )
