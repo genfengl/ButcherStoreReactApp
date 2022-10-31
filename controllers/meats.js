@@ -30,9 +30,9 @@ router.post('/api/butcher', upload.single('image'), async (req, res) => {
   })
 
 // PUT Request / Update Meat
-  router.put('/api/butcher/:id', upload.single('image'), async (req, res) => {
+  router.put('/api/butcher/edit/:id', upload.single('image'), async (req, res) => {
     let meats = await Meat.findById(req.params.id)
-
+    console.log(req.body)
     req.params.imageURL = req.file?.path
 
     meats = await Meat.findByIdAndUpdate(
