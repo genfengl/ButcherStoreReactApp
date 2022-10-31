@@ -20,8 +20,8 @@ const authenticate = (req, res, next) => {
 
     router.post('/login', authenticate, (req, res) => {
         console.log('logged in', req.user.username)
-        const { id, username } = req.user
-        res.json({ id, username })     
+        const { id, username, isAdmin } = req.user
+        res.json({ id, username, isAdmin })     
 })
 
     router.post('/register', async (req, res) => {

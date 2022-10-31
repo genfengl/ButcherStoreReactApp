@@ -1,46 +1,59 @@
-const handleEditSubmit = (event) => {
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-}
 
 const Edit = () => {
+  const [item, setItem] = useState(null)
+  const { id } = useParams()
+
+  console.log(item)
+
+    useEffect(() => {
+        const getItem = async () => {
+          const res = await fetch(`/api/butcher/${id}`)
+          const data = await res.json()
+          setItem(data)
+        }
+        getItem()
+      }, [id])
+
+      const handleEditSubmit = (event) => {
+
+      }
+
     return (
-    <form onSubmit={handleEditSubmit} method="post" /* put? */ >
-    <input
-      name="title"
-      type="text"
-      required
-      placeholder="Aged Beef"
-      
-    />
-    <br />
-    <input
-      name="imageURL"
-      required
-      type="text"
-    />
-    <br />
-    <input
-      name="price"
-      required
-      type="number"
-    />
-      <br />
-    <input
-      name="stock"
-      required
-      type="number"
-    />
-      <br />
-    <input
-      name="category"
-      required
-      type="text"
-    />
-    <br />
-    <textarea name="description"></textarea>
-    <br />
-    <input type="submit" value="Edit Post"/>
-  </form>
+      <Form>
+      <Form.Group className="mb-3" >
+        <Form.Label>title</Form.Label>
+        <Form.Control type="text" placeholder="title" value={item?.title} />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Image</Form.Label>
+        <Form.Control type="file" placeholder="Image" value={item?.imageURL} />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Price</Form.Label>
+        <Form.Control type="text" placeholder="Price" value={item?.price}/>
+      </Form.Group>
+      <Form.Group className="mb-3"  >
+        <Form.Label>Stock</Form.Label>
+        <Form.Control type="text" placeholder="Stock" value={item?.stock} />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Category</Form.Label>
+        <Form.Control type="text" placeholder="Category" value={item?.category} />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Description</Form.Label>
+        <Form.Control type="text" placeholder="Description" value={item?.description} />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+
     )
 }
 
