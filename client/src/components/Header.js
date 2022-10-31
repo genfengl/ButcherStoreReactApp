@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LogoutButton from './LogoutButton';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -9,7 +10,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 
-const Header = ({ handleOffcanvasShow, user }) => {
+const Header = ({ handleOffcanvasShow, user, setUser }) => {
     const handleHamburgerClick = () => {
         handleOffcanvasShow()
     }
@@ -46,6 +47,9 @@ const Header = ({ handleOffcanvasShow, user }) => {
                     Butcher
                 </Navbar.Brand>
                 <Nav className='d-flex flex-row gap-2 order-last align-items-center'>
+                <Nav.Link as={Link} to='/api/butcher/search'>
+                { user && <LogoutButton setUser={setUser} /> }
+                    </Nav.Link>
                     <Nav.Link as={Link} to='/api/butcher/search'>
                         <FaSearch />
                     </Nav.Link>
