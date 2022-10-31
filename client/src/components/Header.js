@@ -19,7 +19,7 @@ const Header = ({ handleOffcanvasShow, user }) => {
             <Container>
                 {/* use aria-controls to toggle the nav within navbar.collapse using the id */}
                 {/* <Navbar.Toggle aria-controls='basic-navbar-nav' /> */}
-                <Button variant='light' onClick={handleHamburgerClick} ><GiHamburgerMenu /></Button>
+                <Button className="d-md-none" variant='light' onClick={handleHamburgerClick} ><GiHamburgerMenu /></Button>
                 <Navbar.Collapse id='basic-navbar-nav' >
                     <Nav className='order-md-2'>
                         <Nav.Link as={Link} to='/api/butcher' >
@@ -42,25 +42,33 @@ const Header = ({ handleOffcanvasShow, user }) => {
                         </Nav.Link>
                         {/* Maybe move the login and register links to the profile page?
                         if (!user) show login page with register option, if (user) show profile page */}
-                        <Nav.Link as={Link} to='/api/butcher/login'>
+                        { user ? ( 
+                            ''
+                        ) : ( <>
+                            <Nav.Link as={Link} to='/api/butcher/login'>
                             L
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/register'>
                             Reg
                         </Nav.Link>
+                        </>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Brand className='order-md-first me-0 me-md-3' as={Link} to='/api/butcher'>
                     Butcher
                 </Navbar.Brand>
-                <Nav className='d-flex flex-row gap-2 order-last'>
+                <Nav className='d-flex flex-row gap-2 order-last align-items-center'>
                     <Nav.Link as={Link} to='/api/butcher/search'>
                         <FaSearch />
                     </Nav.Link>
-                    {/* Conditional Rendering if (user) return profile, else return login & register */}
-                    <Nav.Link as={Link} to='/api/butcher/profile'>
+                    { user ? (
+                    <Nav.Link className="d-flex flex-row gap-2 align-items-center" as={Link} to='/api/butcher/profile'>
                         <FaUser />
+                          {` ${user.username}`}
                     </Nav.Link>
+                    ) : '' }
+                    
                     <Nav.Link as={Link} to='/api/butcher/cart' >
                         <FaShoppingCart />
                     </Nav.Link>
