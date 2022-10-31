@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Beef from './components/Beef'
 import Pork from './components/Pork'
 import Poultry from './components/Poultry'
+import Lamb from './components/Lamb';
 import Seafood from './components/Seafood'
 import OffcanvasNav from './components/OffcanvasNav';
 import LoginPage from './components/LoginPage';
@@ -54,10 +55,11 @@ function App() {
       <main>
         <Routes>
           <Route path='/api/butcher' element={<Home items={items} />} />
-          <Route path='/api/butcher/beef' element={<Beef />} />
-          <Route path='/api/butcher/pork' element={<Pork />} />
-          <Route path='/api/butcher/poultry' element={<Poultry />} />
-          <Route path='/api/butcher/seafood' element={<Seafood />} />
+          <Route path='/api/butcher/beef' element={<Beef items={items} />} />
+          <Route path='/api/butcher/pork' element={<Pork items={items} />} />
+          <Route path='/api/butcher/poultry' element={<Poultry items={items} />} />
+          <Route path='/api/butcher/lamb' element={<Lamb items={items} />} />
+          <Route path='/api/butcher/seafood' element={<Seafood items={items} />} />
           {/* unsure below route does anything if no user loggedin? */}
           if (user) { <Route path='/api/butcher/profile' element={<ProfilePage />} /> }
           <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
