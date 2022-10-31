@@ -8,6 +8,7 @@ import Poultry from './components/Poultry'
 import Lamb from './components/Lamb';
 import Seafood from './components/Seafood'
 import OffcanvasNav from './components/OffcanvasNav';
+import ModalSearch from './components/ModalSearch'
 import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import RegisterPage from './components/RegisterPage';
@@ -24,14 +25,14 @@ import { useEffect, useState } from 'react';
 function App() {
   const [items, setItems] = useState([])
   const [user, setUser] = useState(null)
-
   const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
+  const [showModalSearch, setShowModalSearch] = useState(false)
 
   const handleOffcanvasClose = () => setShowOffcanvasNav(false)
-  const handleOffcanvasShow = () => {
-    setShowOffcanvasNav(true)
-    console.log(showOffcanvasNav)
-  }
+  const handleOffcanvasShow = () => setShowOffcanvasNav(true)
+
+  const handleModalSearchClose = () => setShowModalSearch(false)
+  const handleModalSearchShow = () => setShowModalSearch(true)
 
   useEffect(() => {
     const getItems = async () => {
@@ -46,11 +47,18 @@ function App() {
 
   return (
     <Container>
+      <OffcanvasNav
+        showOffcanvasNav={showOffcanvasNav}
+        handleOffcanvasClose={handleOffcanvasClose}
+      />
 
-<OffcanvasNav showOffcanvasNav={showOffcanvasNav} handleOffcanvasClose={handleOffcanvasClose} />
+      <ModalSearch />
 
-<Header handleOffcanvasShow={handleOffcanvasShow} user={user} />
-
+      <Header
+        handleOffcanvasShow={handleOffcanvasShow}
+        handleModalSearchShow={handleModalSearchShow}
+        user={user} setUser={setUser}
+      />
 
       <main>
         <Routes>
@@ -61,7 +69,7 @@ function App() {
           <Route path='/api/butcher/lamb' element={<Lamb items={items} />} />
           <Route path='/api/butcher/seafood' element={<Seafood items={items} />} />
           {/* unsure below route does anything if no user loggedin? */}
-          if (user) { <Route path='/api/butcher/profile' element={<ProfilePage />} /> }
+          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
           <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
           <Route path='/api/butcher/login' element={<LoginPage />} />
