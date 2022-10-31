@@ -26,11 +26,6 @@ const authenticate = (req, res, next) => {
 
     router.post('/register', async (req, res) => {
         const { username, password } = req.body
-            // User.findOne({ username: username }).then((user) => {
-            //     if (user) {
-            //         return res.status(400).json({ msg: 'Username is already registered '})
-            //     }
-            // })
             try {
                 const newUser = await User.register(
                 new User({ 
