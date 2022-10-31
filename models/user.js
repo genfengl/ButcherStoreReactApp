@@ -1,7 +1,15 @@
 const mongoose = require('mongoose')
 const passportlocalMongoose = require('passport-local-mongoose')
 
-const userSchema = new mongoose.Schema({})
+const userSchema = new mongoose.Schema({
+    roles: {
+        type: [{
+            type: String,
+            enum: ['user', 'admin']
+        }],
+        default: ['user']
+    }
+})
 
 userSchema.plugin(passportlocalMongoose)
 

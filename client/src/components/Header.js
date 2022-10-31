@@ -9,7 +9,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 
-const Header = ({ handleOffcanvasShow }) => {
+const Header = ({ handleOffcanvasShow, user }) => {
     const handleHamburgerClick = () => {
         handleOffcanvasShow()
     }

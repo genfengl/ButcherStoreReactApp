@@ -58,6 +58,7 @@ const handleLoginSubmit = async (event) => {
         <Form.Control value={loginFields.password} name="password" type="password" placeholder="Password" onChange={handleLoginChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        { loginFields && <p>welcome back {loginFields.roles.type}</p>}
       { error && <p>Incorrect Username or Password</p>}
       </Form.Group>
       <Button variant="primary" type="submit">
