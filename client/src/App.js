@@ -22,7 +22,7 @@ import { useEffect, useState } from 'react';
 // }
 function App() {
   const [items, setItems] = useState([])
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(null)
 
   const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
 
@@ -48,7 +48,7 @@ function App() {
 
 <OffcanvasNav showOffcanvasNav={showOffcanvasNav} handleOffcanvasClose={handleOffcanvasClose} />
 
-<Header handleOffcanvasShow={handleOffcanvasShow} />
+<Header handleOffcanvasShow={handleOffcanvasShow} user={user} />
 
 
       <main>
