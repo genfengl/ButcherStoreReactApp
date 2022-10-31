@@ -5,7 +5,7 @@ const CarouselContainer = ({ items }) => {
         <Carousel style={{ minHeight: '30vh' }}>
             {items.map((item) => {
                 return (
-                    <Carousel.Item key={item.id} style={{ maxHeight: '30vh' }}>
+                    <Carousel.Item key={item._id} style={{ maxHeight: '30vh' }}>
                         <img
                             className='d-block w-100'
                             style={{
