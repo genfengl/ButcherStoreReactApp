@@ -43,7 +43,7 @@ function App() {
   }, [])
 
   return (
-    <Container>
+    <div>
       <OffcanvasNav
         showOffcanvasNav={showOffcanvasNav}
         handleOffcanvasClose={handleOffcanvasClose}
@@ -54,7 +54,7 @@ function App() {
         user={user} setUser={setUser}
       />
 
-      <main>
+      <Container>
         <Routes>
           <Route path='/api/butcher' element={<Home items={items} user={user} />} />
           <Route path='/api/butcher/beef' element={<Beef items={items} />} />
@@ -72,8 +72,8 @@ function App() {
           <Route path='/api/butcher/login' element={<LoginPage />} />
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
-      </main>
-    </Container>
+      </Container>
+      </div>
   );
 }
 

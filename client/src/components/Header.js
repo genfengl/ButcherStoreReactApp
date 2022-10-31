@@ -43,10 +43,10 @@ const Header = ({ handleOffcanvasShow, user, setUser }) => {
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Brand className='order-md-first me-0 me-md-3' as={Link} to='/api/butcher'>
+                <Navbar.Brand className='order-md-first ms-4 me-0 mx-md-3' as={Link} to='/api/butcher'>
                     Butcher
                 </Navbar.Brand>
-                <Nav className='d-flex flex-row gap-2 order-last align-items-center'>
+                <Nav className='d-flex flex-row gap-2 me-3 order-last align-items-center'>
                 <Nav.Link as={Link} to='/api/butcher/search'>
                 { user && <LogoutButton setUser={setUser} /> }
                     </Nav.Link>

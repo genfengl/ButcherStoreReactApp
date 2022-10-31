@@ -8,7 +8,7 @@ const Poultry = ({ items }) => {
 
     return (
         <div>
-            <h1>Poultry</h1>
+            <div className='fs-1 fw-bold text-center p-5'>POULTRY</div>
             <Catalogue items={poultryItems} />
         </div>
     )
