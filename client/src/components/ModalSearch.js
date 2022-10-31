@@ -1,41 +1,45 @@
 
+import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 
 const ModalSearch = ({ showModalSearch, handleModalSearchClose }) => {
+const [searchData, setSearchData] = useState([])
+const [query, setQuery] = useState('')
+const [noResult, setNoResult] = useState(false)
+
+    // useEffect(() => {
+    //     const getSearchResult = async () => {
+    //         // what url to use for the fetch? needs to be dynamic?
+    //         const res = await fetch('/api/butcher')
+    //         const data = await res.json()
+    //     }
+
+    // }, [])
+
     return (
         <>
             <Modal show={showModalSearch} onHide={handleModalSearchClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>SEARCH</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email address</Form.Label>
+                            
                             <Form.Control
-                                type="email"
-                                placeholder="name@example.com"
+                                type="text"
+                                placeholder="Search"
                                 autoFocus
                             />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
-                            <Form.Label>Example textarea</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
-                        </Form.Group>
+                        </Form.Group>                
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleModalSearchClose}>
                         Close
-                    </Button>
-                    <Button variant="primary" onClick={handleModalSearchClose}>
-                        Save Changes
-                    </Button>
+                    </Button>                  
                 </Modal.Footer>
             </Modal>
         </>

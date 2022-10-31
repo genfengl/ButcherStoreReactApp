@@ -52,7 +52,10 @@ function App() {
         handleOffcanvasClose={handleOffcanvasClose}
       />
 
-      <ModalSearch />
+      <ModalSearch 
+        showModalSearch={showModalSearch}
+        handleModalSearchClose={handleModalSearchClose}
+      />
 
       <Header
         handleOffcanvasShow={handleOffcanvasShow}

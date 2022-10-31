@@ -10,9 +10,12 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 
-const Header = ({ handleOffcanvasShow, user, setUser }) => {
+const Header = ({ handleOffcanvasShow, handleModalSearchShow, user, setUser }) => {
     const handleHamburgerClick = () => {
         handleOffcanvasShow()
+    }
+    const handleSearchClick = () => {
+        handleModalSearchShow()
     }
     return (
         // set collapseOnSelect to make the NavBar collapse automatically when the user selects an item
@@ -47,13 +50,12 @@ const Header = ({ handleOffcanvasShow, user, setUser }) => {
                     Butcher
                 </Navbar.Brand>
                 <Nav className='d-flex flex-row gap-2 order-last align-items-center'>
-                <Nav.Link as={Link} to='/api/butcher/search'>
-                { user && <LogoutButton setUser={setUser} /> }
-                    </Nav.Link>
                     <Nav.Link as={Link} to='/api/butcher/search'>
-                        <FaSearch />
+                        {user && <LogoutButton setUser={setUser} />}
                     </Nav.Link>
-
+                    <Button variant="light" onClick={handleSearchClick} >
+                        <FaSearch />
+                    </Button>
                     {user ? (<Nav.Link as={Link} to='/api/butcher/profile'>
                         <FaUser />
                         {" " + user.username}

@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 
-const OffcanvasNav = ({ showOffcanvasNav, handleOffcanvasShow, handleOffcanvasClose }) => {
+const OffcanvasNav = ({ showOffcanvasNav, handleOffcanvasClose }) => {
     return (
             <Offcanvas show={showOffcanvasNav} onHide={handleOffcanvasClose}>
                 <Container>
