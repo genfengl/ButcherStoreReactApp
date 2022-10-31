@@ -10,6 +10,13 @@ router.get('/api/butcher', async (req, res) => {
     res.json(meats)
 })
 
+//Search Route
+router.get('/api/butcher/search/:query', async (req, res) => {
+  const searchedMeats = await Meat.find(
+    {$text: {$search: req.params.query}}
+  )
+  res.json(searchedMeats)
+})
 
 //Show Page - Display individual Meat
 router.get('/api/butcher/:id', async (req, res) => {
