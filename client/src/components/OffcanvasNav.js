@@ -4,40 +4,40 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 
-const OffcanvasNav = ({ showOffcanvasNav, handleOffcanvasShow, handleOffcanvasClose }) => {
+const OffcanvasNav = ({ showOffcanvasNav, handleOffcanvasNavClose }) => {
     return (
-            <Offcanvas show={showOffcanvasNav} onHide={handleOffcanvasClose}>
+            <Offcanvas show={showOffcanvasNav} onHide={handleOffcanvasNavClose}>
                 <Container>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title><b>SHOP</b></Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className='d-flex flex-column'>
-                        <Nav.Link as={Link} to='/api/butcher' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher' onClick={handleOffcanvasNavClose} >
                             <b>Home</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/all' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/all' onClick={handleOffcanvasNavClose} >
                             <b>All Products</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/beef' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/beef' onClick={handleOffcanvasNavClose} >
                             <b>Beef</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/pork' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/pork' onClick={handleOffcanvasNavClose} >
                             <b>Pork</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/poultry' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/poultry' onClick={handleOffcanvasNavClose} >
                             <b>Poultry</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/lamb' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/lamb' onClick={handleOffcanvasNavClose} >
                             <b>Lamb</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/seafood' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/seafood' onClick={handleOffcanvasNavClose} >
                             <b>Seafood</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/login' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/login' onClick={handleOffcanvasNavClose} >
                             <b>Login</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/register' onClick={handleOffcanvasClose} >
+                        <Nav.Link as={Link} to='/api/butcher/register' onClick={handleOffcanvasNavClose} >
                             <b>Register</b>
                         </Nav.Link>
                     </Nav>

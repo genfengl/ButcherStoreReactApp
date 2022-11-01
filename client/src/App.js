@@ -8,6 +8,7 @@ import Poultry from './components/Poultry'
 import Lamb from './components/Lamb';
 import Seafood from './components/Seafood'
 import OffcanvasNav from './components/OffcanvasNav';
+import OffcanvasCart from './components/OffcanvasCart'
 import Search from './components/Search'
 import Show from './components/Show'
 import LoginPage from './components/LoginPage';
@@ -31,9 +32,13 @@ function App() {
   const [user, setUser] = useState(null)
   const [showItem, setShowItem] = useState(null)
   const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
+  const [showOffcanvasCart, setShowOffcanvasCart] = useState(false)
 
-  const handleOffcanvasClose = () => setShowOffcanvasNav(false)
-  const handleOffcanvasShow = () => setShowOffcanvasNav(true)
+  const handleOffcanvasNavClose = () => setShowOffcanvasNav(false)
+  const handleOffcanvasNavShow = () => setShowOffcanvasNav(true)
+  const handleOffcanvasCartClose = () => setShowOffcanvasCart(false)
+  const handleOffcanvasCartShow = () => setShowOffcanvasCart(true)
+
 
   useEffect(() => {
     const getItems = async () => {
@@ -48,11 +53,16 @@ function App() {
     <div>
       <OffcanvasNav
         showOffcanvasNav={showOffcanvasNav}
-        handleOffcanvasClose={handleOffcanvasClose}
+        handleOffcanvasNavClose={handleOffcanvasNavClose}
+      />
+      <OffcanvasCart 
+        showOffcanvasCart={showOffcanvasCart}
+        handleOffcanvasCartClose={handleOffcanvasCartClose}
       />
 
       <Header
-        handleOffcanvasShow={handleOffcanvasShow}
+        handleOffcanvasNavShow={handleOffcanvasNavShow}
+        handleOffcanvasCartShow={handleOffcanvasCartShow}
         user={user} setUser={setUser}
       />
 
@@ -71,8 +81,6 @@ function App() {
           <Route path='/api/butcher/add' element={<CreatePage items={items} setItems={setItems}/>} />
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user}/>} />}
           else {<Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />}
-          
-          
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
       </Container>
