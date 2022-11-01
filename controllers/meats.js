@@ -11,11 +11,30 @@ router.get('/api/butcher', async (req, res) => {
 })
 
 //Search Route
-router.get('/api/butcher/search/:query', async (req, res) => {
-  const searchedMeats = await Meat.find(
-    {$text: {$search: req.params.query}}
-  )
-  res.json(searchedMeats)
+router.get('/api/butcher/search/', async (req, res) => {
+  console.log(req.query)
+  const { query } = req.query
+  let meats
+  if ( query ) {
+    meats = await Meat.aggregate(
+      [
+        {
+          "$search": {
+            "index": "default",
+            "text": {
+              "query": query,
+              "path": {
+                "wildcard": "*"
+              }
+            }
+          }
+        }
+      ]
+    )
+  } else {
+    meats = await Meat.find()
+  }
+  res.json(meats)
 })
 
 //Show Page - Display individual Meat

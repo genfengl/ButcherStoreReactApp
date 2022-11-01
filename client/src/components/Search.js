@@ -7,7 +7,6 @@ import Catalogue from './Catalogue'
 
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState('')
-    const [query, setQuery] = useState('')
     const [searchResults, setSearchResults] = useState([])
 
     const handleChange = (event) => {
@@ -16,31 +15,36 @@ const Search = () => {
 
     const handleSearchSubmit = (event) => {
         event.preventDefault()
-        setQuery(searchTerm)
     }
 
     useEffect(() => {
         const getSearchResults = async () => {
-            const res = await fetch(`/api/butcher/search/${searchTerm}`)
+            // search?query=() should set the req.query for the backend
+            const res = await fetch(`/api/butcher/search?query=${searchTerm}`)
             const data = await res.json()
             setSearchResults(data)
         }
         getSearchResults()
-    },[query])
+    }, [searchTerm])
 
     return (
         <>
-            <h1>Search</h1>
+            <div className='fs-1 fw-bold text-center p-4'>SEARCH</div>
             <Form>
-                <Form.Group className='d-flex gap-1'>
+                <Form.Group>
                     <Form.Control type="text" placeholder="search" onChange={handleChange} />
-                    <Button onClick={handleSearchSubmit}>Search</Button>
                 </Form.Group>
-                <Form.Text className="text-muted">
-                    Popular items: ......
-                </Form.Text>
+                <div className="text-muted py-3">
+                    Popular items: beef, chicken, prawn
+                </div>
             </Form>
-            <Catalogue items={searchResults} />
+            {/* default searchResult is an empty array, which is always true */}
+            {(searchResults.length > 0) ? <Catalogue items={searchResults} /> : 
+            <div>
+                <h1>No items found</h1>
+            </div>}
+            
+
         </>
     )
 }
