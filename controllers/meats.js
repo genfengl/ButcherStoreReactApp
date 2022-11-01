@@ -16,6 +16,7 @@ router.get('/api/butcher/search/', async (req, res) => {
   const { query } = req.query
   let meats
   if ( query ) {
+    // using .aggregate to use the text search function from mongoDB atlas
     meats = await Meat.aggregate(
       [
         {

@@ -10,9 +10,12 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 
-const Header = ({ handleOffcanvasShow, user, setUser }) => {
+const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser }) => {
     const handleHamburgerClick = () => {
-        handleOffcanvasShow()
+        handleOffcanvasNavShow()
+    }
+    const handleCartClick = () => {
+        handleOffcanvasCartShow()
     }
     return (
         // set collapseOnSelect to make the NavBar collapse automatically when the user selects an item
@@ -47,13 +50,13 @@ const Header = ({ handleOffcanvasShow, user, setUser }) => {
                     Butcher
                 </Navbar.Brand>
                 <Nav className='d-flex flex-row gap-2 me-3 order-last align-items-center'>
-                <Nav.Link as={Link} to='/api/butcher'>
-                { user && <LogoutButton setUser={setUser} /> }
+                    <Nav.Link as={Link} to='/api/butcher'>
+                        {user && <LogoutButton setUser={setUser} />}
                     </Nav.Link>
                     <Nav.Link as={Link} to='/api/butcher/search'>
                         <FaSearch />
                     </Nav.Link>
-                { user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add">Add Product</Nav.Link> }
+                    {user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add">Add Product</Nav.Link>}
                     {user ? (<Nav.Link as={Link} to='/api/butcher/profile'>
                         <FaUser />
                         {" " + user.username}
@@ -61,7 +64,7 @@ const Header = ({ handleOffcanvasShow, user, setUser }) => {
                         (<Nav.Link as={Link} to='/api/butcher/login'>
                             <FaUser />
                         </Nav.Link>)}
-                    <Nav.Link as={Link} to='/api/butcher/cart' >
+                    <Nav.Link as={Link} onClick={handleCartClick} >
                         <FaShoppingCart />
                     </Nav.Link>
                 </Nav>
