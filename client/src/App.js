@@ -71,7 +71,7 @@ function App() {
           {<Route path='/api/butcher/add' element={<CreatePage items={items} setItems={setItems}/>} />}
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
           <Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />
-          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage />} />}
+          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user}/>} />}
           <Route path='/api/butcher/login' element={<LoginPage />} />
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
