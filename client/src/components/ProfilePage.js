@@ -8,7 +8,7 @@ const ProfilePage = (user) => {
       {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)}
       <ul><h4>Liked Products</h4>
       { likes.map((like) => {
-       return <li>{like}</li>
+       return <li>{like.title}{like}</li>
       })}
       </ul>
       <h4>Purchase History</h4>
