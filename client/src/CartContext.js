@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react";
 
+
 export const CartContext = createContext({
     items: [],
     getProductQuantity: () => {},
@@ -9,7 +10,6 @@ export const CartContext = createContext({
     deleteFromCart: () => {},
     getTotalCost: () => {}
 })
-
 
 export function CartProvider({children}) {
     const [cartProducts, setCartProducts] = useState([])
@@ -23,11 +23,10 @@ export function CartProvider({children}) {
         return quantity
     }
 
-
     const addOneToCart = (id) => {
         const quantity = getProductQuantity(id)
 
-        if (quantity === 0) {
+        if (quantity === 0) {   // product is not in cart
             setCartProducts(
                 [
                     ...cartProducts,
@@ -37,7 +36,7 @@ export function CartProvider({children}) {
                     }
                 ]
             )
-        } else {
+        } else {    // product is in cart
             setCartProducts(
                 cartProducts.map(
                     product =>
@@ -52,7 +51,7 @@ export function CartProvider({children}) {
     const removeOneFromCart = (id) => {
         const quantity = getProductQuantity(id)
 
-        if (quantity == 1) {
+        if (quantity === 1) {    // delete the item from cart if quantity is just 1
             deleteFromCart(id)
         } else {
             setCartProducts(
@@ -66,24 +65,23 @@ export function CartProvider({children}) {
         }
     }
 
-
     const deleteFromCart = (id) => {
         setCartProducts(cartProducts => 
-                cartProducts.filter(currentProduct => {
-                    return currentProduct.id != id;
+                cartProducts.filter(product => {
+                    return product.id !== id;
                 })
             )
 
     }
 
 
-    // const getTotalCost = (itemPrices) => {
-    //     let totalCost = 0
-    //     cartProducts.map((cartItem) => {
-    //         totalCost += (itemPrices * cartItem.quantity) 
-    //     })
-    //     return cartProducts
-    // }
+    const getTotalCost = () => {
+        let totalCost = 0
+        cartProducts?.map((cartItem) => {
+            return totalCost += (cartItem.price * cartItem.quantity) 
+        })
+        return totalCost
+    }
 
 
     const contextValue = {
@@ -92,7 +90,7 @@ export function CartProvider({children}) {
         addOneToCart,
         removeOneFromCart,
         deleteFromCart,
-        // getTotalCost
+        getTotalCost
     }
 
     return (
