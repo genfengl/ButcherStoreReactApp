@@ -53,7 +53,7 @@ const Header = ({ handleOffcanvasShow, user, setUser }) => {
                     <Nav.Link as={Link} to='/api/butcher/search'>
                         <FaSearch />
                     </Nav.Link>
-
+                { user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add">Add Product</Nav.Link> }
                     {user ? (<Nav.Link as={Link} to='/api/butcher/profile'>
                         <FaUser />
                         {" " + user.username}
