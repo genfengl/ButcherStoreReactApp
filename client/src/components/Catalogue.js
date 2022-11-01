@@ -6,9 +6,14 @@ import Button from 'react-bootstrap/Button'
 import CarouselContainer from './Carousel'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { CartContext } from "../CartContext"
+import { useContext } from "react"
+
 
 const Catalogue = ({ items, setItems, user }) => {
 const navigate = useNavigate()
+const cart = useContext(CartContext)
+// const getProductQuantity = cart.getProductQuantity(items._id)
 
     const handleDelete = async (id) => {
         const res = await fetch(`/api/butcher/${id}`, { method: 'DELETE' })
@@ -57,9 +62,9 @@ const navigate = useNavigate()
                                 <Button variant="danger" onClick={() => handleDelete(item._id) }>Delete</Button>
                                 </>
                                 ) : (
-                                    <Button variant='outline-dark'>
-                                    Add to Cart
-                                </Button>
+                                    <Button variant='outline-dark' onClick={() => cart.addOneToCart(item._id)}> 
+                                    Add to Cart 
+                                    </Button>
                                 )}
                                 
                             </Card.Body>

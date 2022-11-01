@@ -19,7 +19,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button'
 import Edit from './components/Edit';
 import CreatePage from './components/CreatePage';
-
+import CartProvider from './CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 
@@ -51,11 +51,13 @@ function App() {
 
   return (
     <div>
+      <CartProvider>
       <OffcanvasNav
         showOffcanvasNav={showOffcanvasNav}
         handleOffcanvasNavClose={handleOffcanvasNavClose}
       />
       <OffcanvasCart 
+        items={items}
         showOffcanvasCart={showOffcanvasCart}
         handleOffcanvasCartClose={handleOffcanvasCartClose}
       />
@@ -84,7 +86,9 @@ function App() {
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>
       </Container>
+      </CartProvider>
       </div>
+      
   );
 }
 
