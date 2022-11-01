@@ -33,11 +33,12 @@ const Edit = ({ items, setItems }) => {
   
   const handleEditSubmit = async (event) => {
     event.preventDefault()
+    const formData = new FormData(event.target)
     const res = await fetch(`/api/butcher/edit/${item?._id}`, {
       method: "PUT",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(item)
+      body: formData
     })
+    console.log(formData)
     const data = await res.json()
     const updatedItems = items?.map((_item) => {
       if (_item._id !== data._id) {
