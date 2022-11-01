@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-const CreateMeat = ({ posts, setPosts }) => {
+const CreateMeat = ({ items, setItems }) => {
 //   const navigate = useNavigate()
 //   // not using states to control the form cuz not using json
 //   const handleSubmit = async (event) => {
@@ -18,22 +18,22 @@ const CreateMeat = ({ posts, setPosts }) => {
 
 //below potential handler?
 
-// const handleSubmit = async(event) => {
-// event.preventDefault()
-// const newMeatData = new FormData(event.target)
-// const res = await fetch('api/posts', {
-// method: 'POST',
-// body: newMeatData
-// })
-// const data = await res.json()
-// setPosts([data, ...posts])
-// res.redirect('/')
-// }
+const handleCreateSubmit = async(event) => {
+event.preventDefault()
+const newMeatData = new FormData(event.target)
+const res = await fetch('/api/butcher', {
+method: 'POST',
+body: newMeatData
+})
+const data = await res.json()
+setItems([data, ...items])
+res.redirect('/')
+}
 
-
-//form data for Meat schema in models/mongoDB
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleCreateSubmit}>
+      <label>Product Name: </label>
+      <br />
       <input
         name="title"
         type="text"
@@ -41,11 +41,15 @@ const CreateMeat = ({ posts, setPosts }) => {
         placeholder="Aged Beef"
       />
       <br />
+      <label>Image: </label>
+      <br />
       <input
-        name="imageURL"
+        name="image"
         required
-        type="text"
+        type="file"
       />
+      <br />
+      <label>Price (Dollars): </label>
       <br />
       <input
         name="price"
@@ -53,17 +57,23 @@ const CreateMeat = ({ posts, setPosts }) => {
         type="number"
       />
         <br />
+        <label>Stock Ammount: </label>
+        <br />
       <input
         name="stock"
         required
         type="number"
       />
         <br />
+        <label>Category (Beef, Seafood, Poultry, Lamb, Pork) </label>
+        <br />
       <input
         name="category"
         required
         type="text"
       />
+      <br />
+      <label>Description: </label>
       <br />
       <textarea name="description"></textarea>
       <br />
