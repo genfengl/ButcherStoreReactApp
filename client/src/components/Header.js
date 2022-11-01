@@ -47,7 +47,7 @@ const Header = ({ handleOffcanvasShow, user, setUser }) => {
                     Butcher
                 </Navbar.Brand>
                 <Nav className='d-flex flex-row gap-2 me-3 order-last align-items-center'>
-                <Nav.Link as={Link} to='/api/butcher/search'>
+                <Nav.Link as={Link} to='/api/butcher'>
                 { user && <LogoutButton setUser={setUser} /> }
                     </Nav.Link>
                     <Nav.Link as={Link} to='/api/butcher/search'>
