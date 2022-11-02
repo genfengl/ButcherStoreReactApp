@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router';
+import { FiLogOut } from 'react-icons/fi'
 
 const LogoutButton = ({ setUser }) => {
   const navigate = useNavigate()
@@ -14,7 +15,7 @@ const LogoutButton = ({ setUser }) => {
     }
   
     return (
-      <Button variant="outline-primary" onClick={handleClick}>Logout</Button>
+      <Button variant="none" className="text-butcher" onClick={handleClick}>LOGOUT</Button>
     )
   }
   
