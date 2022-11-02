@@ -17,7 +17,7 @@ import Container from 'react-bootstrap/Container'
 import Edit from './components/Edit';
 import CreatePage from './components/CreatePage';
 import CartProvider from './CartContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/main.css';
 import { useEffect, useState } from 'react';
 
 
@@ -60,6 +60,7 @@ function App() {
     <div>
       <CartProvider>
       <OffcanvasNav
+        user={user} setUser={setUser}
         showOffcanvasNav={showOffcanvasNav}
         handleOffcanvasNavClose={handleOffcanvasNavClose}
       />

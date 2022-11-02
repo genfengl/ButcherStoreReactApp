@@ -3,11 +3,12 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
+import LogoutButton from "./LogoutButton"
 
-const OffcanvasNav = ({ showOffcanvasNav, handleOffcanvasNavClose }) => {
+const OffcanvasNav = ({ showOffcanvasNav, handleOffcanvasNavClose, user, setUser }) => {
     return (
-            <Offcanvas show={showOffcanvasNav} onHide={handleOffcanvasNavClose}>
-                <Container>
+        <Offcanvas show={showOffcanvasNav} onHide={handleOffcanvasNavClose}>
+            <Container>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title><b>SHOP</b></Offcanvas.Title>
                 </Offcanvas.Header>
@@ -34,16 +35,21 @@ const OffcanvasNav = ({ showOffcanvasNav, handleOffcanvasNavClose }) => {
                         <Nav.Link as={Link} to='/api/butcher/seafood' onClick={handleOffcanvasNavClose} >
                             <b>Seafood</b>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/login' onClick={handleOffcanvasNavClose} >
-                            <b>Login</b>
-                        </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/register' onClick={handleOffcanvasNavClose} >
+                        {user ?
+                            (<Nav.Link as={Link} to='/api/butcher/' onClick={handleOffcanvasNavClose} >
+                                <LogoutButton setUser={setUser} />
+                            </Nav.Link>) : (<Nav.Link as={Link} to='/api/butcher/login' onClick={handleOffcanvasNavClose} >
+                            <b>Login/Register</b>
+                        </Nav.Link>)
+                        }
+
+                        {/* <Nav.Link as={Link} to='/api/butcher/register' onClick={handleOffcanvasNavClose} >
                             <b>Register</b>
-                        </Nav.Link>
+                        </Nav.Link> */}
                     </Nav>
                 </Offcanvas.Body>
-                </Container>
-            </Offcanvas>
+            </Container>
+        </Offcanvas>
     )
 }
 

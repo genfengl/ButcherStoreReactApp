@@ -14,7 +14,7 @@ const LogoutButton = ({ setUser }) => {
     }
   
     return (
-      <Button variant="light" onClick={handleClick}>Logout</Button>
+      <Button variant="outline-primary" onClick={handleClick}>Logout</Button>
     )
   }
   
