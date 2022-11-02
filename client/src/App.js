@@ -1,5 +1,4 @@
-import { Routes, Route, NavLink, Link, Outlet, useParams } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './components/Home';
 import Beef from './components/Beef'
@@ -15,8 +14,6 @@ import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import RegisterPage from './components/RegisterPage';
 import Container from 'react-bootstrap/Container'
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import Button from 'react-bootstrap/Button'
 import Edit from './components/Edit';
 import CreatePage from './components/CreatePage';
 import CartProvider from './CartContext';
@@ -30,7 +27,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [items, setItems] = useState([])
   const [user, setUser] = useState(null)
-  const [showItem, setShowItem] = useState(null)
+  // const [showItem, setShowItem] = useState(null)
   const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
   const [showOffcanvasCart, setShowOffcanvasCart] = useState(false)
 
@@ -76,7 +73,7 @@ function App() {
           <Route path='/api/butcher/poultry' element={<Poultry items={items} />} />
           <Route path='/api/butcher/lamb' element={<Lamb items={items} />} />
           <Route path='/api/butcher/seafood' element={<Seafood items={items} />} />
-          <Route path='/api/butcher/:id' element={<Show />} />
+          <Route path='/api/butcher/:id' element={<Show user={user} />} />
           <Route path='/api/butcher/search' element={<Search />} />
           <Route path='/api/butcher/edit/:id' element={<Edit items={items} setItems={setItems} />} />
           {/* unsure below route does anything if no user loggedin? */}
