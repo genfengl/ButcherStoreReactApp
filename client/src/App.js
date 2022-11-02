@@ -36,6 +36,7 @@ function App() {
   const handleOffcanvasCartClose = () => setShowOffcanvasCart(false)
   const handleOffcanvasCartShow = () => setShowOffcanvasCart(true)
 
+  console.log(user)
 
   useEffect(() => {
     const getItems = async () => {
@@ -44,6 +45,15 @@ function App() {
       setItems(data)
     }
     getItems()
+  }, [])
+
+  useEffect(() => {
+    const getLoggedInUser = async () => {
+      const res = await fetch('/current-session')
+      const data = await res.json()
+      console.log(data)
+    }
+    getLoggedInUser()
   }, [])
 
   return (
