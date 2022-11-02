@@ -23,6 +23,7 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
                     <Offcanvas.Title>CART</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
+                <h5>Subtotal ${cart.getTotalCost()}</h5>
                     { productsCount > 0 ? 
                         <>
                             <p>Items in Cart:</p>

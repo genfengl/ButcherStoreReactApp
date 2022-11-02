@@ -35,6 +35,10 @@ export function CartProvider({children}) {
 
     const addOneToCart = (id) => {
         const quantity = getProductQuantity(id)
+        const product = items.find((item) => {
+            return item._id === id
+        })
+        console.log(product)
 
         if (quantity === 0) {   // product is not in cart
             setCartProducts(
@@ -42,7 +46,8 @@ export function CartProvider({children}) {
                     ...cartProducts,
                     {
                         id: id, 
-                        quantity: 1
+                        quantity: 1,
+                        price: product.price
                     }
                 ]
             )
@@ -83,13 +88,12 @@ export function CartProvider({children}) {
             )
     }
 
-
     const getTotalCost = () => {
         
         let totalCost = 0
         cartProducts?.map((cartItem) => {
             
-            totalCost += (items.price * cartItem.quantity) 
+            totalCost += (cartItem.price * cartItem.quantity) 
         })
         return totalCost
     }

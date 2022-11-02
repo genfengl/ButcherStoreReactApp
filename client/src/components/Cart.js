@@ -26,12 +26,15 @@ const Cart = ({ items, quantity, id } ) => {
                      <h5>{item.title}</h5>
                      {/* <img src={item.imageURL}/> */}
                      <p>Qty: {quantity}</p>
-                     <p>Price: ${item.price}</p>
+                     <p>${quantity * item.price}</p>
+                     <p>${item.price} each</p>
+
+
                      {/* <p>Total: ${total}</p> */}
                      <Button sm="6" onClick={() => cart.addOneToCart(item._id)} className="mx-2">+</Button>
                      <Button sm="6" onClick={() => cart.removeOneFromCart(item._id)} className="mx-2">-</Button>
                      <Button variant="danger" onClick={() => cart.deleteFromCart(item._id)}>Remove Item</Button>
-                     <h5>Total: {cart.getTotalCost()}</h5>
+                     
                     </>
                    )
                })}
