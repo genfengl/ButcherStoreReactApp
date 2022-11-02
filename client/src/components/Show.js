@@ -10,10 +10,20 @@ const handleFavourite = (event) => {
 
 }
 
-const Show = () => {
+
+const Show = ({ user }) => {
     const [item, setItem] = useState(null)
     const { id } = useParams()
     const cart = useContext(CartContext)
+    const [liked, setLiked] = useState(false);
+
+    const handleLike = (event) => {
+      setLiked(!liked)
+      // if user.ID = user on file / like {popup('you cannot like this item more than once')}
+      console.log(`${user?.username} has liked ${item?.title}`)
+      //need to push something into the item.likes array -- this is from the meat.js schema
+      }
+      
     useEffect(() => {
         const getItem = async () => {
           const res = await fetch(`/api/butcher/${id}`)
@@ -25,7 +35,6 @@ const Show = () => {
 
     return (
         <div className="item-show">
-        
         <br />
         <h2> {item?.title} </h2>
         <img src={item?.imageURL} alt={item?.title}/>
@@ -37,6 +46,10 @@ const Show = () => {
                 {item?.stock === 0 ? <li>Sorry, we have no stock remaining</li> : <li>We have {item?.stock} in stock!</li>} </ul> 
                 <Button onClick={() => cart.addOneToCart(item._id)} variant='outline-dark'>Add to Cart</Button>
                 <Button onClick={handleFavourite} variant='outline-dark'>Favourite</Button>
+                <Button variant='outline-dark' onClick={handleLike}>Like</Button>
+                <br />
+                <span>Item liked by: {item?.likes.length} customers</span>
+                
         </div>
         </div>
     )

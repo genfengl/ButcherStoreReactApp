@@ -18,7 +18,6 @@ const lamb = {
 }
 
 const likes = [beef, poultry, lamb]
-console.log(likes)
 const ProfilePage = ({user}) => {
     return (
      <div className="user-profile"> <h1> Your Profile </h1>
