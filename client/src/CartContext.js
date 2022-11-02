@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useState } from "react";
-
+import { useEffect } from "react";
 
 export const CartContext = createContext({
     items: [],
@@ -13,6 +13,16 @@ export const CartContext = createContext({
 
 export function CartProvider({children}) {
     const [cartProducts, setCartProducts] = useState([])
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        const getItems = async () => {
+          const res = await fetch('/api/butcher')
+          const data = await res.json()
+          setItems(data)
+        }
+        getItems()
+      }, [])
     
     const getProductQuantity = (id) => {
         const quantity = cartProducts.find(product => product.id === id)?.quantity
@@ -71,14 +81,15 @@ export function CartProvider({children}) {
                     return product.id !== id;
                 })
             )
-
     }
 
 
     const getTotalCost = () => {
+        
         let totalCost = 0
         cartProducts?.map((cartItem) => {
-            return totalCost += (cartItem.price * cartItem.quantity) 
+            
+            totalCost += (items.price * cartItem.quantity) 
         })
         return totalCost
     }
