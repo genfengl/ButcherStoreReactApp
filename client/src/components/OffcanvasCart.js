@@ -11,6 +11,9 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
 
     const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0)
     
+    //  const cartItems = items?.filter((cartProduct) => {
+    //     return cartProduct._id === id
+    //   })
 
     return (
         <>
@@ -27,9 +30,10 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
                                 <Cart items={items} quantity={product.quantity} id={product.id} />
                             ))}
                             <p>Total Items in Cart: {productsCount}</p>
+                           
                             <Button variant="success">Purchase Items</Button>
                         </>
-                :
+                    :
                         <p>There are no items in your cart. Buy something, don't be cheap</p>
                 }
                 </Offcanvas.Body>
