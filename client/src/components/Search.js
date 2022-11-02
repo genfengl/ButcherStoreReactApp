@@ -29,13 +29,13 @@ const Search = () => {
 
     return (
         <>
-            <div className='fs-1 fw-bold text-center p-4'>SEARCH</div>
+            <div className='fs-1 fw-bold text-center p-5 text-butcher'>SEARCH</div>
             <Form>
                 <Form.Group>
                     <Form.Control type="text" placeholder="search" onChange={handleChange} />
                 </Form.Group>
                 <div className="text-muted py-3">
-                    Popular items: beef, chicken, prawn
+                    {searchTerm ? (`Showing search results for: ${searchTerm}`) : 'Showing search results for: all items'} 
                 </div>
             </Form>
             {/* default searchResult is an empty array, which is always true */}
