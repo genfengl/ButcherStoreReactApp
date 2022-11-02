@@ -1,7 +1,7 @@
 //need to pass user data for heading / etc - call api fetch here? - not possible to pass directly from internal models
 const likes = []
 
-const ProfilePage = (user) => {
+const ProfilePage = ({user}) => {
     return (
      <div className="user-profile"> <h1> Your Profile </h1>
       <h3>Username: {user.username}</h3>
