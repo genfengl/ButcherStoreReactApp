@@ -24,6 +24,17 @@ const authenticate = (req, res, next) => {
         res.json({ id, username, isAdmin })     
 })
 
+router.get('/current-session', (req, res) => {
+    passport.authenticate('local', { session: false }, (err, user) => {
+        if (err || !user) {
+            res.send(false);
+        } else {
+            res.send(user);
+        }
+    })(req, res);
+});
+
+
     router.post('/register', async (req, res) => {
         const { username, password } = req.body
             try {
