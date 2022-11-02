@@ -1,8 +1,12 @@
+require('dotenv').config()
+
 const express = require('express')
 const Meat = require('../models/meat')
 const upload = require('../middlewares/upload')
 const { Router } = require('express')
+const { default: Stripe } = require('stripe')
 const router = express.Router()
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 
 
 //Index Page
@@ -10,6 +14,43 @@ router.get('/api/butcher', async (req, res) => {
   // console.log(req.user)
     const meats = await Meat.find()
     res.json(meats)
+})
+
+
+//STRIPE payment Route
+router.post('/api/butcher/checkout', async (req, res) => {
+  try {
+    const items = req.body.items
+  console.log(items)
+    let lineItems = []
+    //Stripe requires stricked formatting - only ID and Qty / pushing only these properties from cart items and sending to stripe
+    items.forEach((item) => {
+      console.log(item.id)
+      lineItems.push(
+        {
+          //price is flagging error
+          price: item.id,
+          quantity: item.quantity
+        }
+      )
+    })
+
+    //initialising stripe with session below
+    const session = await stripe.checkout.sessions.create({
+      line_items: lineItems,
+      mode: 'payment',
+      success_url: 'http://localhost:3000/success',
+      cancel_url: 'http://localhost:3000/cancel'
+    })
+    //sends back the session in which stripe has created - url for user to be redirected to to make payment
+
+    // res.json(JSON.stringify({
+    //   url: session.url
+    // }))
+  } catch(e) {
+    res.status(500).json({ error: e.message })
+  }
+  // res.json(items.id)
 })
 
 

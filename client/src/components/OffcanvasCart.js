@@ -5,7 +5,7 @@ import { useContext } from "react"
 import Cart from "./Cart"
 import Button from "react-bootstrap/esm/Button"
 import Row from "react-bootstrap/esm/Row"
-
+import CheckoutButton from "./CheckoutButton"
 
 const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) => {
     const cart = useContext(CartContext)
@@ -35,7 +35,7 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
                                     {cart.items.map(product => (
                                         <Cart items={items} quantity={product.quantity} id={product.id} />
                                     ))}
-                                    <Button variant="success">Purchase Items</Button>
+                                    <CheckoutButton />
                                 </>
                                 :
                                 <p>There are no items in your cart. Buy something, don't be cheap</p>
