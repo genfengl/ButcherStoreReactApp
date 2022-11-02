@@ -1,19 +1,31 @@
 import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import CarouselContainer from './Carousel'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from "../CartContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 
 const Catalogue = ({ items, setItems, user }) => {
 const navigate = useNavigate()
 const cart = useContext(CartContext)
+const [item, setItem] = useState(false);
 // const getProductQuantity = cart.getProductQuantity(items._id)
+
+const handleLike = async (id) => {
+    const res = await fetch(`/api/butcher/like/${id}`, { method: "PUT"})
+    const data = await res.json()
+    const newItem = items.map((_item) => {
+      if (_item._id !== data._id) {
+        return _item
+      }
+      return data
+    })
+    console.log(newItem)
+    // setItem(newItem)
+  }
 
     const handleDelete = async (id) => {
         const res = await fetch(`/api/butcher/${id}`, { method: 'DELETE' })
@@ -62,9 +74,12 @@ const cart = useContext(CartContext)
                                 <Button variant="danger" onClick={() => handleDelete(item._id) }>Delete</Button>
                                 </>
                                 ) : (
+                                    <>
                                     <Button variant='outline-dark' onClick={() => cart.addOneToCart(item._id)}> 
                                     Add to Cart 
                                     </Button>
+                                    <Button variant='outline-dark' onClick={() => handleLike(item._id)}>Like</Button>
+                                    </>
                                 )}
                                 
                             </Card.Body>
