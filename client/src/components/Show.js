@@ -11,24 +11,31 @@ const handleFavourite = (event) => {
 }
 
 
-const Show = ({ user }) => {
+const Show = ({ user, items }) => {
     const [item, setItem] = useState(null)
     const { id } = useParams()
     const cart = useContext(CartContext)
     const [liked, setLiked] = useState(false);
 
-    const handleLike = (event) => {
-      setLiked(!liked)
-      // if user.ID = user on file / like {popup('you cannot like this item more than once')}
-      console.log(`${user?.username} has liked ${item?.title}`)
-      //need to push something into the item.likes array -- this is from the meat.js schema
-      }
+    // const handleLike = async (id) => {
+    //   const res = await fetch(`/api/butcher/like/${id}`, { method: "PUT"})
+    //   const data = await res.json()
+    //   const newItem = items.map((_item) => {
+    //     if (_item._id !== data._id) {
+    //       return _item
+    //     }
+    //     return data
+    //   })
+    //   console.log(newItem)
+    //   // setItem(newItem)
+    // }
       
     useEffect(() => {
         const getItem = async () => {
           const res = await fetch(`/api/butcher/${id}`)
           const data = await res.json()
           setItem(data)
+          console.log(data)
         }
         getItem()
       }, [id])
@@ -46,7 +53,7 @@ const Show = ({ user }) => {
                 {item?.stock === 0 ? <li>Sorry, we have no stock remaining</li> : <li>We have {item?.stock} in stock!</li>} </ul> 
                 <Button onClick={() => cart.addOneToCart(item._id)} variant='outline-dark'>Add to Cart</Button>
                 <Button onClick={handleFavourite} variant='outline-dark'>Favourite</Button>
-                <Button variant='outline-dark' onClick={handleLike}>Like</Button>
+                {/* <Button variant='outline-dark' onClick={handleLike}>Like</Button> */}
                 <br />
                 <span>Item liked by: {item?.likes.length} customers</span>
                 
