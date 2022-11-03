@@ -20,6 +20,7 @@ import CartProvider from './CartContext';
 import './css/main.css';
 import { useEffect, useState } from 'react';
 import './App.css' 
+import SuccessPage from './components/SuccessPage';
 
 
 
@@ -93,6 +94,7 @@ function App() {
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user} setUser={setUser}/>} />}
           else {<Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />}
           <Route path='/api/butcher/register' element={<RegisterPage />} />
+          <Route path='/api/butcher/success' element={<SuccessPage user={user} />} />
         </Routes>
       </Container>
       </CartProvider>
