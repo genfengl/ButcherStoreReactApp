@@ -25,13 +25,13 @@ const authenticate = (req, res, next) => {
 })
 
 router.get('/current-session', (req, res) => {
-    passport.authenticate('local', { session: false }, (err, user) => {
-        if (err || !user) {
+    console.log(req.user)
+    
+        if (!req.user) {
             res.send(false);
         } else {
-            res.send(user);
+            res.send(req.user);
         }
-    })(req, res);
 });
 
 

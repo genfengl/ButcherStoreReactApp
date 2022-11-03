@@ -47,7 +47,7 @@ router.post('/api/butcher/checkout', async (req, res) => {
     }), 
       mode: 'payment',
       success_url: 'http://localhost:3000/success',
-      cancel_url: 'http://localhost:3000/cancel'
+      cancel_url: 'http://localhost:3000/api/butcher'
     })
     //sends back the session in which stripe has created - url for user to be redirected to to make payment
     
