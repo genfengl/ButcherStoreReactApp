@@ -65,7 +65,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ### How to use the application
 
 ![current app display](./readmefiles/final-design.png "Final UI display")
-![gif of the cart dropdown menu](./readmefiles/initialAdminView.png "Cart Dropdown working well")
+![gif of the cart dropdown menu](./readmefiles/cartgif.gif "Cart Dropdown working well")
 
 All our data is hosted through MongoDB including User & product information.
 
