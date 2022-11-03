@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 import { AiOutlinePlus, AiOutlineShoppingCart, AiOutlineClose, AiFillEdit } from 'react-icons/ai'
 import { BiLike } from 'react-icons/bi'
 import { FaShoppingCart } from 'react-icons/fa'
-import { GrClose } from 'react-icons/gr'
 
 
 import { Link } from 'react-router-dom'
@@ -117,10 +116,11 @@ const Catalogue = ({ items, setItems, user }) => {
                                         </>
                                         ) : (
                                             <>
-                                                <Button variant='outline-butcher' className="fs-4" onClick={() => handleLike(item._id)}>
+                                                {/* redirects users to the login page is not logged in */}
+                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
                                                     <BiLike />
                                                 </Button>
-                                                <Button variant='outline-butcher' className="fs-4" onClick={() => cart.addOneToCart(item._id)}>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
                                                     <AiOutlineShoppingCart />
                                                 </Button>
                                             </>

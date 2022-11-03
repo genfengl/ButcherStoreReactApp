@@ -12,7 +12,8 @@ const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 //Index Page
 router.get('/api/butcher', async (req, res) => {
   // console.log(req.user)
-    const meats = await Meat.find()
+  // default sort by price in ascending order
+    const meats = await Meat.find().sort({price: 1})
     res.json(meats)
 })
 
