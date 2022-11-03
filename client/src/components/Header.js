@@ -13,8 +13,6 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react';
 
 
-
-
 const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser }) => {
     const handleHamburgerClick = () => {
         handleOffcanvasNavShow()
@@ -56,13 +54,13 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
                     NTMY
                 </Navbar.Brand>
                 <Nav className='d-flex flex-row gap-2 me-3 order-last align-items-center'>
-                    <Nav.Link as={Link} to='/api/butcher/search' className="text-light">
+                    <Nav.Link as={Link} to='/api/butcher/search' className="text-light d-flex">
                         <FaSearch />
                     </Nav.Link>
                     {user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add">Add Product</Nav.Link>}
-                    {user ? (<Nav.Link className="d-none d-md-block text-light" as={Link} to='/api/butcher/profile'>
+                    {user ? (<Nav.Link className="d-none d-md-flex text-light align-items-center gap-1" as={Link} to='/api/butcher/profile'>
                         <FaUser />
-                        {" " + user.username}
+                        {user.username}
                     </Nav.Link>) :
                         (<Nav.Link className="d-none d-md-block text-light" as={Link} to='/api/butcher/login'>
                             <FaUser />
@@ -70,13 +68,12 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
                     {/* <Nav.Link className="d-none d-md-block" as={Link} to='/api/butcher'>
                         {user && <LogoutButton setUser={setUser} />}
                     </Nav.Link> */}
-                    <Nav.Link as={Link} onClick={handleCartClick} className="text-light">
+                    <Nav.Link as={Link} onClick={handleCartClick} className="text-light d-flex">
                         <FaShoppingCart />
                     </Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
-
     )
 }
 
