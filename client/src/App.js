@@ -53,7 +53,7 @@ function App() {
     const getLoggedInUser = async () => {
       const res = await fetch('/current-session')
       const data = await res.json()
-      console.log(data)
+      setUser(data)
     }
     getLoggedInUser()
   }, [])
