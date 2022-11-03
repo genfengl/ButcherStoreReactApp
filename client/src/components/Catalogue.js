@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from "../CartContext"
 import { useContext, useState } from "react"
+import Cart from './Cart'
 
 
 const Catalogue = ({ items, setItems, user }) => {
@@ -117,10 +118,10 @@ const Catalogue = ({ items, setItems, user }) => {
                                         ) : (
                                             <>
                                                 {/* redirects users to the login page is not logged in */}
-                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={{user} ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
                                                     <BiLike />
                                                 </Button>
-                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={{user} ? (() => cart.addOneToCart(item._id)) : (() => navigate('/api/butcher/login'))}>
                                                     <AiOutlineShoppingCart />
                                                 </Button>
                                             </>
