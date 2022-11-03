@@ -5,10 +5,10 @@ import Cart from "./Cart"
 const CartProgressBar = ({currentPrice}) => {
     return (
         <Container>
-            <ProgressBar variant="success" now={currentPrice/600*100} className="mb-2"/>
+            <ProgressBar variant="butcher" now={currentPrice/600*100} className="mb-2"/>
             {currentPrice < 600 ? 
             (<div className="text-muted">Spend ${600-currentPrice} more for free shipping!</div>) : 
-            (<div className="color-butcher text-success">Congragulations! You gained free shipping!</div>)}
+            (<div className="text-butcher">Congragulations! You gained free shipping!</div>)}
             
         </Container>
     )

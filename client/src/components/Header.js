@@ -62,7 +62,7 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
                         <FaUser />
                         {user.username}
                     </Nav.Link>) :
-                        (<Nav.Link className="d-none d-md-block text-light" as={Link} to='/api/butcher/login'>
+                        (<Nav.Link className="d-none d-md-flex text-light align-items-center gap-1" as={Link} to='/api/butcher/login'>
                             <FaUser />
                         </Nav.Link>)}
                     {/* <Nav.Link className="d-none d-md-block" as={Link} to='/api/butcher'>

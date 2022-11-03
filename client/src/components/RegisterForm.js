@@ -47,21 +47,21 @@ const RegisterForm = () => {
     return (
       <Form onSubmit={handleRegisterSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Username</Form.Label>
-        <Form.Control maxLength={20} value={registerFields.username} name="username" type="text" placeholder="Enter Username" onChange={handleRegisterChange} />
+        <Form.Label className='lead'>Username</Form.Label>
+        <Form.Control maxLength={20} value={registerFields.username} name="username" type="text" placeholder="Enter New Username" onChange={handleRegisterChange} />
         <Form.Text className="text-muted">
           We'll never share your password with anyone else.. or will we?
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className='lead'>Password</Form.Label>
         <Form.Control value={registerFields.password} name="password" type="password" placeholder="Password" onChange={handleRegisterChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
       { error && <p>{error.error}</p>}
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="butcher" type="submit">
         Submit
       </Button>
     </Form>
