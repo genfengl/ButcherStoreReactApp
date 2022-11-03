@@ -15,46 +15,23 @@ const CheckoutButton = () => {
                 items: [{
                     items: cart.items
                 }]
-            }) 
+            })
         })
         const url = await res.json()
-        
+
         if (url) {
             window.location.assign(url.url)
             // console.log(url)
         } else {
             console.log('error', url)
         }
-        
-
-        
-
-        // .then(res => {
-        //     if (res.ok) return res.json()
-        //     return res.json().then(json => Promise.reject(json))
-        // }).then(({ url }) => {
-        //     console.log(url)
-        // })
-
-        
-
-    
-        
-        // .then((response) => {
-        //     console.log(response)
-        //     return response.json();
-            
-        // }).then((response) => {
-        //     if (response.url) {
-        //         window.location.assign(response.url)
-        //     }
-        // })
-        
-        
-
     }
 
-    return <Button variant="success" onClick={handleCheckoutClick}>Purchase Items</Button>
+    return <Button className="w-100 border-0 rounded-0 my-3 fs-5 fw-bold p-1 text-light text-center" variant="butcher" onClick={handleCheckoutClick}>CHECK OUT</Button>
+
+
+
+
 
 }
 

@@ -47,21 +47,21 @@ const handleLoginSubmit = async (event) => {
     return (
       <Form onSubmit={handleLoginSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Username</Form.Label>
-        <Form.Control value={loginFields.username} name="username" type="text" placeholder="Enter New Username" onChange={handleLoginChange} />
+        <Form.Label className='lead'>Username</Form.Label>
+        <Form.Control value={loginFields.username} name="username" type="text" placeholder="Username" onChange={handleLoginChange} />
         <Form.Text className="text-muted">
           We'll never share your password with anyone else.
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className='lead'>Password</Form.Label>
         <Form.Control value={loginFields.password} name="password" type="password" placeholder="Password" onChange={handleLoginChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
       { error && <p>Incorrect Username or Password</p>}
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="butcher" type="submit">
         Submit
       </Button>
     </Form>

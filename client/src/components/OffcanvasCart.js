@@ -18,43 +18,36 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
 
     return (
         <>
-            <Offcanvas show={showOffcanvasCart} onHide={handleOffcanvasCartClose} placement='end' 
-            >
+            <Offcanvas show={showOffcanvasCart} onHide={handleOffcanvasCartClose}
+                placement='end' className="px-3">
                 {/* cannot use react-bootstrap container */}
                 {/* <Container> */}
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title className='fs-1 fw-bold text-center py-2 text-success'>CART</Offcanvas.Title>
-                    </Offcanvas.Header>
-
-                    <CartProgressBar currentPrice={cart.getTotalCost()} />
-
-                    <Offcanvas.Body>
-                        <div className="d-flex justify-content-between">
-                            <div className="lead">Subtotal </div>
-                            <div className="lead">${cart.getTotalCost()}</div>
-                        </div>
-                        <div className="d-flex justify-content-between">
-                            <div className="text-muted">Total Items in Cart </div>
-                            <div className="text-muted">{productsCount}</div>
-                        </div>
-
-                        <div className="border-top border-3">
-                            {productsCount > 0 ?
-                                <>
-                                    <div className="my-3 fs-5 fw-bold p-1 bg-success text-light text-center">CHECK OUT</div>
-                                    {cart.items.map(product => (
-                                        <Cart items={items} quantity={product.quantity} id={product.id} />
-                                    ))}
-
-                                    <CheckoutButton />
-
-
-                                </>
-                                :
-                                <div className="py-3 lead">There are no items in your cart. Buy something, don't be cheap</div>
-                            }
-                        </div>
-                    </Offcanvas.Body>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title className='fs-1 fw-bold text-center py-2 text-butcher'>CART</Offcanvas.Title>
+                </Offcanvas.Header>
+                <CartProgressBar currentPrice={cart.getTotalCost()} />
+                <Offcanvas.Body>
+                    <div className="border-top border-3">
+                        {productsCount > 0 ?
+                            <>
+                                {cart.items.map(product => (
+                                    <Cart items={items} quantity={product.quantity} id={product.id} />
+                                ))}
+                                <CheckoutButton />
+                            </>
+                            :
+                            <div className="py-3 lead">There are no items in your cart. Buy something, don't be cheap</div>
+                        }
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div className="lead">Subtotal </div>
+                        <div className="lead">${cart.getTotalCost()}</div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div className="text-muted">Total Items in Cart </div>
+                        <div className="text-muted">{productsCount}</div>
+                    </div>
+                </Offcanvas.Body>
                 {/* </Container> */}
             </Offcanvas>
         </>
