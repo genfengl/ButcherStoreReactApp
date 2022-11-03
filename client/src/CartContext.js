@@ -47,7 +47,8 @@ export function CartProvider({children}) {
                     {
                         id: id, 
                         quantity: 1,
-                        price: product.price
+                        price: product.price,
+                        name: product.title
                     }
                 ]
             )

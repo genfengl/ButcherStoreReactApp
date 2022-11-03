@@ -2,6 +2,9 @@ import Button from "react-bootstrap/esm/Button"
 import { useParams } from "react-router-dom"
 import { useEffect, useState, useContext } from "react"
 import { CartContext } from "../CartContext"
+import Card from 'react-bootstrap/Card';
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 
 //need to be styled to have no li styles showing no dotpoint
@@ -40,10 +43,45 @@ const Show = ({ user, items }) => {
         getItem()
       }, [id])
 
-    return (
+      return (
         <div className="item-show">
-        <br />
-        <h2> {item?.title} </h2>
+          
+              <Card style={{ width: '18rem' }}>
+                  <Row>
+                      <Col xs={3}>
+                          <img src={item.imageURL}
+                              style={{
+                                  height: '600px',
+                                  width: '600px'
+                              }}
+                          />
+                      </Col>       
+                              <Col xs={9}>
+                                <Row className="mb-3">
+                                    <Col xs={9}>
+                                        {item.title}                                        
+                                    </Col>
+                                    <Col xs={3} className="d-flex justify-content-end">
+                                        x{item.quantity}
+                                    </Col>
+                                </Row>
+                                <Row className="d-flex align-items-center">
+                                    <Col xs={6} className="text-muted">
+                                        ${item.price} each
+                                    </Col>
+                                  
+                                </Row>
+                            </Col>
+
+                      </Row>
+
+
+          </Card>
+
+
+
+
+        {/* <h2> {item?.title} </h2>
         <img src={item?.imageURL} alt={item?.title}/>
         <div>
             <ul className="details-list">
@@ -55,9 +93,9 @@ const Show = ({ user, items }) => {
                 <Button onClick={handleFavourite} variant='outline-dark'>Favourite</Button>
                 {/* <Button variant='outline-dark' onClick={handleLike}>Like</Button> */}
                 <br />
-                <span>Item liked by: {item?.likes.length} customers</span>
+                {/* <span>Item liked by: {item?.likes.length} customers</span> */}
                 
-        </div>
+        {/* </div> */} 
         </div>
     )
 }
