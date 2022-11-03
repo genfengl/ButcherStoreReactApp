@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
-import { FaSearch, FaUser, FaShoppingCart } from 'react-icons/fa'
+import { FaSearch, FaUser, FaShoppingCart, FaPlus } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
@@ -57,7 +57,7 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
                     <Nav.Link as={Link} to='/api/butcher/search' className="text-light d-flex">
                         <FaSearch />
                     </Nav.Link>
-                    {user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add">Add Product</Nav.Link>}
+                    {user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add" className='text-light d-flex'><FaPlus /></Nav.Link>}
                     {user ? (<Nav.Link className="d-none d-md-flex text-light align-items-center gap-1" as={Link} to='/api/butcher/profile'>
                         <FaUser />
                         {user.username}

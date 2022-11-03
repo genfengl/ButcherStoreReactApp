@@ -5,6 +5,7 @@ import { CartContext } from "../CartContext"
 import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import { BiLike } from "react-icons/bi"
 
 
 
@@ -22,18 +23,18 @@ const Show = ({ user, items }) => {
     const cart = useContext(CartContext)
     const [liked, setLiked] = useState(false);
 
-    // const handleLike = async (id) => {
-    //   const res = await fetch(`/api/butcher/like/${id}`, { method: "PUT"})
-    //   const data = await res.json()
-    //   const newItem = items.map((_item) => {
-    //     if (_item._id !== data._id) {
-    //       return _item
-    //     }
-    //     return data
-    //   })
-    //   console.log(newItem)
-    //   // setItem(newItem)
-    // }
+    const handleLike = async (id) => {
+        const res = await fetch(`/api/butcher/like/${id}`, { method: "PUT" })
+        const data = await res.json()
+        const newItem = items?.map((_item) => {
+            if (_item._id !== data._id) {
+                return _item
+            }
+            return data
+        })
+        console.log(newItem)
+        // setItem(newItem)
+    }
 
     useEffect(() => {
         const getItem = async () => {
@@ -48,24 +49,28 @@ const Show = ({ user, items }) => {
 
     return (
         <Container>
-            <Row className="mt-3 d-none d-md-flex">
+            <Row className="mt-5 d-none d-md-flex">
                 <Col xs={6}>
                     <img src={item?.imageURL}
                         style={{
-                            height: '100%',
-                            width: '100%'
+                            width: '100%',
+                            height: 'auto'
                         }}
                     />
                 </Col>
-                <Col xs={6} className="gap-3 d-flex flex-column">
+                <Col xs={6} className="gap-3 d-flex flex-column ">
                     <Row className="mb-3">
                         <Col>
-                            <div className='fs-2 fw-bold pt-3 text-start'>{item?.title}</div>
+                            <div className='fs-2 fw-bold text-start d-flex align-items-center gap-3 w-100 justify-content-between'>{item?.title}<Button variant='outline' className="fs-4 text-butcher" onClick={() => handleLike(item._id)}>
+                                <BiLike />
+                            </Button></div>
+                            
                         </Col>
                     </Row>
                     <Row>
-                        <Col className="fs-3 fw-bold text-butcher">
+                        <Col className="fs-3 fw-bold text-butcher ">
                             ${item?.price}
+                            
                         </Col>
                     </Row>
                     <Row>
@@ -76,13 +81,16 @@ const Show = ({ user, items }) => {
                     </Row>
                     <Row>
                         <Col className="lead">
+                            <div className="lead fw-bold mb-3">Product Description</div>
                             {item?.description}
                         </Col>
                     </Row>
                 </Col>
             </Row>
-            <div className="mt-3 d-md-none d-flex flex-column gap-3 align-items-center">
-                <div className='fs-2 fw-bold pt-3 text-start'>{item?.title}</div>
+            <div className="mt-5 d-md-none d-flex flex-column gap-3 align-items-center">
+                <div className='fs-2 fw-bold text-start d-flex align-items-center gap-3 w-100 justify-content-between'>{item?.title}<Button variant='outline' className="fs-4 text-butcher" onClick={() => handleLike(item._id)}>
+                                <BiLike />
+                            </Button></div>
                 <img src={item?.imageURL}
                     style={{
                         width: '100%',
