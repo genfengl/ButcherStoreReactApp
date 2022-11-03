@@ -2,7 +2,7 @@ import Button from "react-bootstrap/esm/Button"
 import { useParams } from "react-router-dom"
 import { useEffect, useState, useContext } from "react"
 import { CartContext } from "../CartContext"
-import Card from 'react-bootstrap/Card';
+import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
@@ -32,7 +32,7 @@ const Show = ({ user, items }) => {
     //   console.log(newItem)
     //   // setItem(newItem)
     // }
-      
+      console.log(items)
     useEffect(() => {
         const getItem = async () => {
           const res = await fetch(`/api/butcher/${id}`)
@@ -44,30 +44,31 @@ const Show = ({ user, items }) => {
       }, [id])
 
       return (
-        <div className="item-show">
           
-              <Card style={{ width: '18rem' }}>
+              <Container >
+                 
                   <Row>
-                      <Col xs={3}>
-                          <img src={item.imageURL}
+                      <Col xs={6}>
+                          <img src={item?.imageURL}
                               style={{
-                                  height: '600px',
-                                  width: '600px'
+                                  height: '100%',
+                                  width: '100%'
                               }}
                           />
                       </Col>       
-                              <Col xs={9}>
+                              <Col xs={6}>
+
                                 <Row className="mb-3">
                                     <Col xs={9}>
-                                        {item.title}                                        
+                                    <div className='fs-1 fw-bold text-center p-5 text-butcher'>{item?.title}</div>
                                     </Col>
-                                    <Col xs={3} className="d-flex justify-content-end">
-                                        x{item.quantity}
+                                    <Col xs={9} className="d-flex justify-content-end">
+                                        {item?.stock}
                                     </Col>
                                 </Row>
                                 <Row className="d-flex align-items-center">
                                     <Col xs={6} className="text-muted">
-                                        ${item.price} each
+                                        ${item?.price}
                                     </Col>
                                   
                                 </Row>
@@ -75,13 +76,12 @@ const Show = ({ user, items }) => {
 
                       </Row>
 
-
-          </Card>
-
+          </Container> 
 
 
 
-        {/* <h2> {item?.title} </h2>
+
+        /* <h2> {item?.title} </h2>
         <img src={item?.imageURL} alt={item?.title}/>
         <div>
             <ul className="details-list">
@@ -91,12 +91,11 @@ const Show = ({ user, items }) => {
                 {item?.stock === 0 ? <li>Sorry, we have no stock remaining</li> : <li>We have {item?.stock} in stock!</li>} </ul> 
                 <Button onClick={() => cart.addOneToCart(item._id)} variant='outline-dark'>Add to Cart</Button>
                 <Button onClick={handleFavourite} variant='outline-dark'>Favourite</Button>
-                {/* <Button variant='outline-dark' onClick={handleLike}>Like</Button> */}
-                <br />
-                {/* <span>Item liked by: {item?.likes.length} customers</span> */}
+                {/* <Button variant='outline-dark' onClick={handleLike}>Like</Button> */
+               
+                /* <span>Item liked by: {item?.likes.length} customers</span> */
                 
-        {/* </div> */} 
-        </div>
+       
     )
 }
 
