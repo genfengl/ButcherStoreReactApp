@@ -21,8 +21,10 @@ const purchaseLog = [{/*title, totcalCost */ }, {}, {}, {}]
 // }
 
 // const likes = [beef, poultry, lamb]
+
 const ProfilePage = ({ user, setUser }) => {
-  const [items, setItems] = useState(null)
+  const [items, setItems] = useState([])
+
   useEffect(() => {
     const getItems = async () => {
       const res = await fetch('/api/butcher')
@@ -39,12 +41,24 @@ const ProfilePage = ({ user, setUser }) => {
         <div>hello</div>
       </Link>
       <h3>Username:</h3>
-      {/* <h3>{user.username}</h3>
-      {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)} */}
-      <ul><h4>Liked Products</h4>
-        {/* { items?.map((item) => {
-        const likesArray = item.likes
-         (likesArray._id === user._id && <li>{item?.title}</li>)
+
+      <h3>{user.username}</h3>
+      {/* {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)} */}
+      <h4>Liked Products</h4>
+      <ul>
+      { items?.map((item) => {
+        item.likes?.filter(id => {
+          if (id === user.id) {
+            return <p>Hello</p>
+          }
+         
+        })
+      
+
+        
+
+      
+
         //  {
         //   return (
         //     <li>{item?.title}</li>
@@ -57,9 +71,9 @@ const ProfilePage = ({ user, setUser }) => {
       </ul>
       <h4>Purchase History:</h4>
       <ul>
-        {/* imported purchase log? */ purchaseLog.map((purchase) => {
+        {/* {imported purchase log? / purchaseLog.map((purchase) => {
           return <li>{purchase.title} for {purchase.totalCost}</li> //totalCost currently placeholder name while we work out getTotalCost cart functionality
-        })}
+        })} */}
       </ul>
     </div>
   )

@@ -6,8 +6,10 @@ import Cart from "./Cart"
 import Button from "react-bootstrap/Button"
 
 import Row from "react-bootstrap/esm/Row"
-import CartProgressBar from "./CartProgressBar"
 
+import CheckoutButton from "./CheckoutButton"
+
+import CartProgressBar from "./CartProgressBar"
 
 const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) => {
     const cart = useContext(CartContext)
@@ -41,6 +43,10 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
                                     {cart.items.map(product => (
                                         <Cart items={items} quantity={product.quantity} id={product.id} />
                                     ))}
+
+                                    <CheckoutButton />
+
+
                                 </>
                                 :
                                 <div className="py-3 lead">There are no items in your cart. Buy something, don't be cheap</div>
