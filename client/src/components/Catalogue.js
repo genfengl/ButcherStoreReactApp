@@ -79,9 +79,12 @@ const Catalogue = ({ items, setItems, user }) => {
                                             <Button variant="danger" onClick={() => handleDelete(item._id)}>Delete</Button>
                                         </>
                                         ) : (
-                                            <Button variant='outline-butcher' onClick={() => cart.addOneToCart(item._id)}>
-                                                Add to Cart
-                                            </Button>
+                                            <>
+                                    <Button variant='outline-dark' onClick={() => cart.addOneToCart(item._id)}>
+                                    Add to Cart
+                                    </Button>
+                                    <Button variant='outline-dark' onClick={() => handleLike(item._id)}>Like</Button>
+                                    </>
                                         )}
 
                                     </Card.Body>
