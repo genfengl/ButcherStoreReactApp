@@ -5,6 +5,8 @@ import { CartContext } from "../CartContext"
 import Card from 'react-bootstrap/Card';
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Container from "react-bootstrap/esm/Container";
+
 
 
 //need to be styled to have no li styles showing no dotpoint
@@ -32,56 +34,61 @@ const Show = ({ user, items }) => {
     //   console.log(newItem)
     //   // setItem(newItem)
     // }
-      
+
     useEffect(() => {
         const getItem = async () => {
-          const res = await fetch(`/api/butcher/${id}`)
-          const data = await res.json()
-          setItem(data)
-          console.log(data)
+            const res = await fetch(`/api/butcher/${id}`)
+            const data = await res.json()
+            setItem(data)
+            console.log(data)
         }
         getItem()
-      }, [id])
+    }, [id])
 
-      return (
-        <div className="item-show">
-          
-              <Card style={{ width: '18rem' }}>
-                  <Row>
-                      <Col xs={3}>
-                          <img src={item.imageURL}
-                              style={{
-                                  height: '600px',
-                                  width: '600px'
-                              }}
-                          />
-                      </Col>       
-                              <Col xs={9}>
-                                <Row className="mb-3">
-                                    <Col xs={9}>
-                                        {item.title}                                        
-                                    </Col>
-                                    <Col xs={3} className="d-flex justify-content-end">
-                                        x{item.quantity}
-                                    </Col>
-                                </Row>
-                                <Row className="d-flex align-items-center">
-                                    <Col xs={6} className="text-muted">
-                                        ${item.price} each
-                                    </Col>
-                                  
-                                </Row>
-                            </Col>
+    return (
+        <Container>
+            <Row className="mt-3">
+                <Col xs={6}>
+                    <img src={item?.imageURL}
+                        style={{
+                            height: '100%',
+                            width: '100%'
+                        }}
+                    />
+                </Col>
+                <Col xs={6} className="gap-3 d-flex flex-column">
+                    <Row className="mb-3">
+                        <Col>
+                            <div className='fs-2 fw-bold pt-3 text-start'>{item?.title}</div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="fs-3 fw-bold text-butcher">
+                            ${item?.price}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Button className="w-100 border-0 rounded-0 my-3 fs-5 fw-bold p-2 text-light text-center"
+                                variant="butcher" onClick={()=>cart.addOneToCart(item?._id)}>ADD TO CART</Button>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="lead">
+                            {item?.description}
+                        </Col>
+                    </Row>
+                </Col>
 
-                      </Row>
+            </Row>
 
 
-          </Card>
+        </Container>
 
 
 
 
-        {/* <h2> {item?.title} </h2>
+        /* <h2> {item?.title} </h2>
         <img src={item?.imageURL} alt={item?.title}/>
         <div>
             <ul className="details-list">
@@ -91,12 +98,12 @@ const Show = ({ user, items }) => {
                 {item?.stock === 0 ? <li>Sorry, we have no stock remaining</li> : <li>We have {item?.stock} in stock!</li>} </ul> 
                 <Button onClick={() => cart.addOneToCart(item._id)} variant='outline-dark'>Add to Cart</Button>
                 <Button onClick={handleFavourite} variant='outline-dark'>Favourite</Button>
-                {/* <Button variant='outline-dark' onClick={handleLike}>Like</Button> */}
-                <br />
-                {/* <span>Item liked by: {item?.likes.length} customers</span> */}
-                
-        {/* </div> */} 
-        </div>
+                {/* <Button variant='outline-dark' onClick={handleLike}>Like</Button> */
+
+        /* <span>Item liked by: {item?.likes.length} customers</span> */
+
+
+
     )
 }
 
