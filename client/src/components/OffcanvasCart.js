@@ -31,7 +31,7 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
                         {productsCount > 0 ?
                             <>
                                 {cart.items.map(product => (
-                                    <Cart items={items} quantity={product.quantity} id={product.id} />
+                                    <Cart key={product.id} items={items} quantity={product.quantity} id={product.id} />
                                 ))}
                                 <CheckoutButton />
                             </>

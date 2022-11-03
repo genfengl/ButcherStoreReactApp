@@ -27,7 +27,7 @@ const Cart = ({ items, quantity, id }) => {
 
             {cartItems.map((item) => {
                 return (
-                    <Card className=" border-0">
+                    <Card key={item.title} className=" border-0">
                         <Row>
                             <Col xs={3}>
                                 <img src={item.imageURL}
