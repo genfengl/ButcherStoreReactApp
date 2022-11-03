@@ -15,7 +15,6 @@ import ProfilePage from './components/ProfilePage';
 import RegisterPage from './components/RegisterPage';
 import Container from 'react-bootstrap/Container'
 import Edit from './components/Edit';
-import CreatePage from './components/CreatePage';
 import CreateMeat from './components/CreateMeat';
 import CartProvider from './CartContext';
 import './css/main.css';
