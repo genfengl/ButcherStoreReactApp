@@ -37,7 +37,7 @@ const ProfilePage = ({ user, setUser }) => {
 
   let likedItems = []
   items.forEach((item) => {
-    if (item.likes.includes(user.id)) {
+    if (item.likes.includes(user?._id)) {
       likedItems.push(item)
     }
   })
@@ -53,7 +53,7 @@ const ProfilePage = ({ user, setUser }) => {
         <div className='fs-3 fw-bold text-start text-butcher'>Liked Products</div>
       </div>
 
-      
+
       {/* {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)} */}
       <Catalogue items={likedItems} />
       <div className='fs-3 fw-bold text-start text-butcher'>Purchase History</div>

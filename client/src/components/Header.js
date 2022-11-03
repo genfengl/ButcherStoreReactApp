@@ -29,10 +29,8 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
                 {/* <Navbar.Toggle aria-controls='basic-navbar-nav' /> */}
                 <Button className="d-md-none text-light" variant='none' onClick={handleHamburgerClick} ><GiHamburgerMenu /></Button>
                 <Navbar.Collapse id='basic-navbar-nav' >
-                    <Nav className='order-md-2 lead'>
-                        <Nav.Link as={Link} to='/api/butcher' >
-                            HOME
-                        </Nav.Link>
+                    <Nav className='order-md-2 fs-6'>
+                        
                         <Nav.Link as={Link} to='/api/butcher/beef' >
                             BEEF
                         </Nav.Link>
@@ -51,9 +49,11 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Brand className='fw-bold fs-3 order-md-first ms-4 me-0 mx-md-3' as={Link} to='/api/butcher'>
-                    NTMY
+                    <img src="/logo.png" style={{
+                        height:'48px'
+                    }}/>
                 </Navbar.Brand>
-                <Nav className='d-flex flex-row gap-2 me-3 order-last align-items-center'>
+                <Nav className='d-flex flex-row gap-1 me-3 order-last align-items-center'>
                     <Nav.Link as={Link} to='/api/butcher/search' className="text-light d-flex">
                         <FaSearch />
                     </Nav.Link>
