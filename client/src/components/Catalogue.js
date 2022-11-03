@@ -2,6 +2,10 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import { AiOutlinePlus, AiOutlineShoppingCart, AiOutlineClose, AiFillEdit } from 'react-icons/ai'
+import { BiLike } from 'react-icons/bi'
+import { FaShoppingCart } from 'react-icons/fa'
+import { GrClose } from 'react-icons/gr'
 
 
 import { Link } from 'react-router-dom'
@@ -44,7 +48,7 @@ const Catalogue = ({ items, setItems, user }) => {
     return (
         <>
             {/* set the columns of row according to screen size */}
-            <Row xs={2} md={2} lg={3} xl={4} className='g-3'>
+            <Row xs={2} md={2} lg={3} xl={4} className='g-4'>
                 {items?.map((item) => {
                     return (
                         <Col key={item._id} >
@@ -61,33 +65,69 @@ const Catalogue = ({ items, setItems, user }) => {
                                                 objectFit: 'cover',
                                             }}
                                         />
+                                        {/* <Card.ImgOverlay className='p-0 d-md-none' style={{
+                                            zIndex: "100"
+                                        }}>
+                                            <Card.Body className='p-0 d-flex justify-content-end'>
+                                                {user?.isAdmin === true ? (<>
+                                                    <Link to={`/api/butcher/edit/${item._id}`} >
+                                                        <Button variant='outline' className='text-primary fs-4'>
+                                                            <AiFillEdit />
+                                                        </Button>
+                                                    </Link>
+                                                    <Button variant="outline" className="text-danger fs-4" onClick={() => handleDelete(item._id)}>
+                                                        <AiOutlineClose />
+                                                    </Button>
+                                                </>
+                                                ) : (
+                                                    <>
+                                                        <Button variant='butcher' className="text-butcher fs-4" onClick={() => handleLike(item._id)}>
+                                                            <BiLike />
+                                                        </Button>
+                                                        <Button variant='none' className="text-butcher fs-4" onClick={() => cart.addOneToCart(item._id)}>
+                                                            <AiOutlineShoppingCart />
+                                                        </Button>
+
+                                                    </>
+                                                )}
+                                            </Card.Body>
+                                        </Card.ImgOverlay> */}
                                     </Link>
                                 )}
-                                    <Card.Body className='text-center'>
-                                        {/* display a message when image is unavailable */}
-                                        {item.imageURL ? (
-                                            ''
-                                        ) : (
-                                            <Card.Title>No Image Available</Card.Title>
-                                        )}
-                                        {/* display title of the item */}
-                                        <Card.Text className='lead'>{item.title}</Card.Text>
-                                        <Card.Text className='text-muted'>${item.price}</Card.Text>
-                                        {/* button for add to cart */}
+                                <Card.Body className='text-center'>
+                                    {/* display a message when image is unavailable */}
+                                    {item.imageURL ? (
+                                        ''
+                                    ) : (
+                                        <Card.Title>No Image Available</Card.Title>
+                                    )}
+                                    {/* display title of the item */}
+                                    <Card.Text className='lead'>{item.title}</Card.Text>
+                                    <Card.Text className='text-muted'>${item.price}</Card.Text>
+                                    {/* button for add to cart */}
+                                    <div className='d-flex justify-content-around'>
                                         {user?.isAdmin === true ? (<>
-                                            <Link to={`/api/butcher/edit/${item._id}`} ><Button>Edit</Button></Link>
-                                            <Button variant="danger" onClick={() => handleDelete(item._id)}>Delete</Button>
+                                            <Link to={`/api/butcher/edit/${item._id}`} >
+                                                <Button variant='outline-primary' className='fs-4'>
+                                                    <AiFillEdit />
+                                                </Button></Link>
+                                            <Button variant="outline-danger" className="fs-4" onClick={() => handleDelete(item._id)}>
+                                                <AiOutlineClose />
+                                            </Button>
                                         </>
                                         ) : (
                                             <>
-                                    <Button variant='outline-butcher' onClick={() => cart.addOneToCart(item._id)}>
-                                    Add to Cart
-                                    </Button>
-                                    <Button variant='outline-butcher' onClick={() => handleLike(item._id)}>Like</Button>
-                                    </>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={() => handleLike(item._id)}>
+                                                    <BiLike />
+                                                </Button>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={() => cart.addOneToCart(item._id)}>
+                                                    <AiOutlineShoppingCart />
+                                                </Button>
+                                            </>
                                         )}
+                                    </div>
 
-                                    </Card.Body>
+                                </Card.Body>
                             </Card>
                         </Col>
                     )

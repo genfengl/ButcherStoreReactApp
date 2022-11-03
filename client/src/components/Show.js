@@ -48,7 +48,7 @@ const Show = ({ user, items }) => {
 
     return (
         <Container>
-            <Row className="mt-3">
+            <Row className="mt-3 d-none d-md-flex">
                 <Col xs={6}>
                     <img src={item?.imageURL}
                         style={{
@@ -71,7 +71,7 @@ const Show = ({ user, items }) => {
                     <Row>
                         <Col>
                             <Button className="w-100 border-0 rounded-0 my-3 fs-5 fw-bold p-2 text-light text-center"
-                                variant="butcher" onClick={()=>cart.addOneToCart(item?._id)}>ADD TO CART</Button>
+                                variant="butcher" onClick={() => cart.addOneToCart(item?._id)}>ADD TO CART</Button>
                         </Col>
                     </Row>
                     <Row>
@@ -80,8 +80,28 @@ const Show = ({ user, items }) => {
                         </Col>
                     </Row>
                 </Col>
-
             </Row>
+            <div className="mt-3 d-md-none d-flex flex-column gap-3 align-items-center">
+                <div className='fs-2 fw-bold pt-3 text-start'>{item?.title}</div>
+                <img src={item?.imageURL}
+                    style={{
+                        width: '100%',
+                        height: 'auto'
+                    }} />
+                <div className="fs-3 lead">
+                    ${item?.price}
+                </div>
+                <Button className="w-100 border-0 rounded-0 fs-5 fw-bold p-2 text-light text-center"
+                    variant="butcher" onClick={() => cart.addOneToCart(item?._id)}>
+                    ADD TO CART
+                </Button>
+                <div className="lead fw-bold align-self-start">
+                    Product Description
+                </div>
+                <div className="lead">
+                    {item?.description}
+                </div>
+            </div>
 
 
         </Container>
