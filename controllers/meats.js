@@ -21,15 +21,16 @@ router.get('/api/butcher', async (req, res) => {
 router.post('/api/butcher/checkout', async (req, res) => {
   try {
     const items = req.body.items
-  console.log(items)
+  // console.log(req.body)
     let lineItems = []
     //Stripe requires stricked formatting - only ID and Qty / pushing only these properties from cart items and sending to stripe
+    // console.log(items)
     items.forEach((item) => {
-      console.log(item.id)
+      
       lineItems.push(
         {
           //price is flagging error
-          price: item.id,
+          price: item.price,
           quantity: item.quantity
         }
       )
@@ -43,14 +44,14 @@ router.post('/api/butcher/checkout', async (req, res) => {
       cancel_url: 'http://localhost:3000/cancel'
     })
     //sends back the session in which stripe has created - url for user to be redirected to to make payment
-
-    // res.json(JSON.stringify({
-    //   url: session.url
-    // }))
+    
+    res.json(JSON.stringify({
+      url: session.url
+    }))
   } catch(e) {
     res.status(500).json({ error: e.message })
   }
-  // res.json(items.id)
+  // res.json(lineItems)
 })
 
 

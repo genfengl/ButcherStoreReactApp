@@ -12,16 +12,40 @@ const CheckoutButton = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                items: cart.items
+                items: [{
+                    price: 'price_1Lzs9IDOiAVCxgJkrVRQKPg0',
+                    quantity: 3
+                }]
             }) 
         })
         const url = await res.json()
-        console.log(url)
-        // if (res.ok) {
-        //     window.location = data
-        // } else  {
+        if (url) {
+            window.location.assign(url)
+        } else {
+            console.log('error', url)
+        }
+        
+        
+
+        // .then(res => {
+        //     if (res.ok) return res.json()
+        //     return res.json().then(json => Promise.reject(json))
+        // }).then(({ url }) => {
         //     console.log(url)
-        // }
+        // })
+
+    
+        
+        // .then((response) => {
+        //     console.log(response)
+        //     return response.json();
+            
+        // }).then((response) => {
+        //     if (response.url) {
+        //         window.location.assign(response.url)
+        //     }
+        // })
+        
         
 
     }
