@@ -41,34 +41,22 @@ const ProfilePage = ({ user, setUser }) => {
       likedItems.push(item)
     }
   })
-  console.log(likedItems)
 
   return (
-    <div className="user-profile">
-      <div className='fs-1 fw-bold text-center p-5 text-butcher'>Profile</div>
-      <Link className="d-none d-md-block" to='/api/butcher'>
+    <div className="d-flex flex-column gap-3">
+      <div className='fs-1 fw-bold text-center p-5 text-butcher'>PROFILE</div>
+      <div className="lead d-flex align-items-center gap-2">
+        Username: {user?.username}
         {user && <LogoutButton setUser={setUser} />}
-        <div>hello</div>
-      </Link>
-      <h3>Username:</h3>
+      </div>
+      <div>
+        <div className='fs-3 fw-bold text-start text-butcher'>Liked Products</div>
+      </div>
 
-      <h3>{user?.username}</h3>
+      
       {/* {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)} */}
-      <h4>Liked Products</h4>
       <Catalogue items={likedItems} />
-
-
-
-
-
-
-
-
-
-
-
-
-      <h4>Purchase History:</h4>
+      <div className='fs-3 fw-bold text-start text-butcher'>Purchase History</div>
       <ul>
         {/* {imported purchase log? / purchaseLog.map((purchase) => {
           return <li>{purchase.title} for {purchase.totalCost}</li> //totalCost currently placeholder name while we work out getTotalCost cart functionality

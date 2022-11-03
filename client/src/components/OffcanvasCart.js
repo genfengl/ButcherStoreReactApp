@@ -18,8 +18,10 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
 
     return (
         <>
-            <Offcanvas show={showOffcanvasCart} onHide={handleOffcanvasCartClose} placement='end'>
-                <Container>
+            <Offcanvas show={showOffcanvasCart} onHide={handleOffcanvasCartClose} placement='end' 
+            >
+                {/* cannot use react-bootstrap container */}
+                {/* <Container> */}
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title className='fs-1 fw-bold text-center py-2 text-success'>CART</Offcanvas.Title>
                     </Offcanvas.Header>
@@ -53,7 +55,7 @@ const OffcanvasCart = ({ showOffcanvasCart, handleOffcanvasCartClose, items }) =
                             }
                         </div>
                     </Offcanvas.Body>
-                </Container>
+                {/* </Container> */}
             </Offcanvas>
         </>
     )

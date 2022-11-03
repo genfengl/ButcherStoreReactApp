@@ -16,9 +16,11 @@ import RegisterPage from './components/RegisterPage';
 import Container from 'react-bootstrap/Container'
 import Edit from './components/Edit';
 import CreatePage from './components/CreatePage';
+import CreateMeat from './components/CreateMeat';
 import CartProvider from './CartContext';
 import './css/main.css';
 import { useEffect, useState } from 'react';
+import './App.css' 
 
 
 
@@ -88,7 +90,7 @@ function App() {
           <Route path='/api/butcher/search' element={<Search />} />
           <Route path='/api/butcher/edit/:id' element={<Edit items={items} setItems={setItems} />} />
           {/* unsure below route does anything if no user loggedin? */}
-          <Route path='/api/butcher/add' element={<CreatePage items={items} setItems={setItems}/>} />
+          <Route path='/api/butcher/add' element={items.length && <CreateMeat items={items} setItems={setItems}/>} />
           if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user} setUser={setUser}/>} />}
           else {<Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />}
           <Route path='/api/butcher/register' element={<RegisterPage />} />
