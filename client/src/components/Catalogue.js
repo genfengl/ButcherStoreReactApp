@@ -49,7 +49,7 @@ const Catalogue = ({ items, setItems, user }) => {
                     return (
                         <Col key={item._id} >
                             {/* set the height of card to 100px */}
-                            <Card className='h-100 border-0 rounded-0' key={item._id}>
+                            <Card className='meat-card h-100 border-0 rounded-0' key={item._id}>
                                 {/* displays item.image if an imageURL exists */}
                                 {item.imageURL && (
                                     <Link to={`/api/butcher/${item._id}`}>
