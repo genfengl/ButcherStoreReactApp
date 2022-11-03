@@ -19,37 +19,43 @@ router.get('/api/butcher', async (req, res) => {
 
 //STRIPE payment Route
 router.post('/api/butcher/checkout', async (req, res) => {
+  console.log(req.body)
+  const toCent = amount => {
+    const str = amount.toString()
+    const [int] = str.split('.')
+  
+    return Number(amount.toFixed(2).replace('.', '').padEnd(int.length === 1 ? 3 : 4, '0'))
+  }
   try {
-    const items = req.body.items
-  // console.log(req.body)
-    let lineItems = []
-    //Stripe requires stricked formatting - only ID and Qty / pushing only these properties from cart items and sending to stripe
-    // console.log(items)
-    items.forEach((item) => {
-      
-      lineItems.push(
-        {
-          //price is flagging error
-          price: item.price,
-          quantity: item.quantity
-        }
-      )
-    })
+    const items = req.body.items[0].items
 
     //initialising stripe with session below
     const session = await stripe.checkout.sessions.create({
-      line_items: lineItems,
+      line_items: items.map((item) => {
+        console.log(item)
+       return {
+          price_data: {
+            currency: 'aud',
+            product_data: {
+              name: item.name,
+            },
+            unit_amount: toCent(item.price),
+          },
+          quantity: item.quantity,
+        }
+        
+    }), 
       mode: 'payment',
       success_url: 'http://localhost:3000/success',
       cancel_url: 'http://localhost:3000/cancel'
     })
     //sends back the session in which stripe has created - url for user to be redirected to to make payment
     
-    res.json(JSON.stringify({
-      url: session.url
-    }))
+    res.json({url: session.url})
+  
   } catch(e) {
     res.status(500).json({ error: e.message })
+    console.log(e)
   }
   // res.json(lineItems)
 })

@@ -13,18 +13,20 @@ const CheckoutButton = () => {
             },
             body: JSON.stringify({
                 items: [{
-                    price: 'price_1Lzs9IDOiAVCxgJkrVRQKPg0',
-                    quantity: 3
+                    items: cart.items
                 }]
             }) 
         })
         const url = await res.json()
+        
         if (url) {
-            window.location.assign(url)
+            window.location.assign(url.url)
+            // console.log(url)
         } else {
             console.log('error', url)
         }
         
+
         
 
         // .then(res => {
@@ -33,6 +35,8 @@ const CheckoutButton = () => {
         // }).then(({ url }) => {
         //     console.log(url)
         // })
+
+        
 
     
         
