@@ -51,5 +51,8 @@ app.listen(PORT, () => {
     console.log('Connected to butcher server on PORT', PORT)
   })
 
-
+  app.get('*', (req, res) => {
+    res.sendFile(ButcherStoreReactApp + '/client/build/index.html')
+  })
+  
 
