@@ -5,10 +5,15 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
 import { FaSearch, FaUser, FaShoppingCart } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+
+
+
 
 const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser }) => {
     const handleHamburgerClick = () => {
@@ -17,54 +22,55 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
     const handleCartClick = () => {
         handleOffcanvasCartShow()
     }
+
     return (
         // set collapseOnSelect to make the NavBar collapse automatically when the user selects an item
-        <Navbar collapseOnSelect className='p-3 d-flex align-items-center justify-content-between' variant='light' bg='light' expand='md' sticky='top'>
+        <Navbar collapseOnSelect className='p-3 d-flex align-items-center justify-content-between' variant='dark' bg='butcher' expand='md' sticky='top'>
             <Container>
                 {/* use aria-controls to toggle the nav within navbar.collapse using the id */}
                 {/* <Navbar.Toggle aria-controls='basic-navbar-nav' /> */}
-                <Button className="d-md-none" variant='light' onClick={handleHamburgerClick} ><GiHamburgerMenu /></Button>
+                <Button className="d-md-none text-light" variant='none' onClick={handleHamburgerClick} ><GiHamburgerMenu /></Button>
                 <Navbar.Collapse id='basic-navbar-nav' >
-                    <Nav className='order-md-2'>
+                    <Nav className='order-md-2 lead'>
                         <Nav.Link as={Link} to='/api/butcher' >
-                            Home
+                            HOME
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/beef' >
-                            Beef
+                            BEEF
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/pork'>
-                            Pork
+                            PORK
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/poultry'>
-                            Poultry
+                            POULTRY
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/lamb'>
-                            Lamb
+                            LAMB
                         </Nav.Link>
                         <Nav.Link as={Link} to='/api/butcher/seafood'>
-                            Seafood
+                            SEAFOOD
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Brand className='order-md-first ms-4 me-0 mx-md-3' as={Link} to='/api/butcher'>
-                    Butcher
+                <Navbar.Brand className='fw-bold fs-3 order-md-first ms-4 me-0 mx-md-3' as={Link} to='/api/butcher'>
+                    NTMY
                 </Navbar.Brand>
                 <Nav className='d-flex flex-row gap-2 me-3 order-last align-items-center'>
-                    <Nav.Link as={Link} to='/api/butcher'>
-                        {user && <LogoutButton setUser={setUser} />}
-                    </Nav.Link>
-                    <Nav.Link as={Link} to='/api/butcher/search'>
+                    <Nav.Link as={Link} to='/api/butcher/search' className="text-light">
                         <FaSearch />
                     </Nav.Link>
                     {user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add">Add Product</Nav.Link>}
-                    {user ? (<Nav.Link as={Link} to='/api/butcher/profile'>
+                    {user ? (<Nav.Link className="d-none d-md-block text-light" as={Link} to='/api/butcher/profile'>
                         <FaUser />
                         {" " + user.username}
                     </Nav.Link>) :
-                        (<Nav.Link as={Link} to='/api/butcher/login'>
+                        (<Nav.Link className="d-none d-md-block text-light" as={Link} to='/api/butcher/login'>
                             <FaUser />
                         </Nav.Link>)}
-                    <Nav.Link as={Link} onClick={handleCartClick} >
+                    {/* <Nav.Link className="d-none d-md-block" as={Link} to='/api/butcher'>
+                        {user && <LogoutButton setUser={setUser} />}
+                    </Nav.Link> */}
+                    <Nav.Link as={Link} onClick={handleCartClick} className="text-light">
                         <FaShoppingCart />
                     </Nav.Link>
                 </Nav>

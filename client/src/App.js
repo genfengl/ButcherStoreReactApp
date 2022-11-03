@@ -17,7 +17,7 @@ import Container from 'react-bootstrap/Container'
 import Edit from './components/Edit';
 import CreatePage from './components/CreatePage';
 import CartProvider from './CartContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/main.css';
 import { useEffect, useState } from 'react';
 
 
@@ -60,6 +60,7 @@ function App() {
     <div>
       <CartProvider>
       <OffcanvasNav
+        user={user} setUser={setUser}
         showOffcanvasNav={showOffcanvasNav}
         handleOffcanvasNavClose={handleOffcanvasNavClose}
       />
@@ -88,7 +89,7 @@ function App() {
           <Route path='/api/butcher/edit/:id' element={<Edit items={items} setItems={setItems} />} />
           {/* unsure below route does anything if no user loggedin? */}
           <Route path='/api/butcher/add' element={<CreatePage items={items} setItems={setItems}/>} />
-          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user}/>} />}
+          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user} setUser={setUser}/>} />}
           else {<Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />}
           <Route path='/api/butcher/register' element={<RegisterPage />} />
         </Routes>

@@ -1,0 +1,17 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Then add additional custom code here
+
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
+
+$custom-butcher-colors: (
+    "butcher": #C02433,
+);
+
+$theme-colors: map-merge($custom-butcher-colors, $theme-colors);
+
+// Include any default variable overrides here (though functions won't be available)
+@import "../node_modules/bootstrap/scss/bootstrap";
+

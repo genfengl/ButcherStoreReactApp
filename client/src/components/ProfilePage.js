@@ -1,8 +1,9 @@
 //need to pass user data for heading / etc - call api fetch here? - not possible to pass directly from internal models
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
+import LogoutButton from "./LogoutButton"
 
-
-const purchaseLog = [{/*title, totcalCost */}, {}, {}, {}]
+const purchaseLog = [{/*title, totcalCost */ }, {}, {}, {}]
 
 // const beef = {
 // title: "Steak",
@@ -20,10 +21,9 @@ const purchaseLog = [{/*title, totcalCost */}, {}, {}, {}]
 // }
 
 // const likes = [beef, poultry, lamb]
-const ProfilePage = ({user}) => {
+
+const ProfilePage = ({ user, setUser }) => {
   const [items, setItems] = useState([])
-
-
 
   useEffect(() => {
     const getItems = async () => {
@@ -33,9 +33,15 @@ const ProfilePage = ({user}) => {
     }
     getItems()
   }, [])
-    return (
-     <div className="user-profile"> <h1> Your Profile </h1>
+  return (
+    <div className="user-profile">
+      <h1> Your Profile </h1>
+      <Link className="d-none d-md-block" to='/api/butcher'>
+        {user && <LogoutButton setUser={setUser} />}
+        <div>hello</div>
+      </Link>
       <h3>Username:</h3>
+
       <h3>{user.username}</h3>
       {/* {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)} */}
       <h4>Liked Products</h4>
@@ -50,6 +56,9 @@ const ProfilePage = ({user}) => {
       
 
         
+
+      
+
         //  {
         //   return (
         //     <li>{item?.title}</li>
@@ -57,7 +66,7 @@ const ProfilePage = ({user}) => {
         // } 
         // ( item?.likes.{??}._id === user?._id && <li>{item?.title}</li>)
       })
-      }
+      } */}
 
       </ul>
       <h4>Purchase History:</h4>
@@ -66,8 +75,8 @@ const ProfilePage = ({user}) => {
           return <li>{purchase.title} for {purchase.totalCost}</li> //totalCost currently placeholder name while we work out getTotalCost cart functionality
         })} */}
       </ul>
-      </div>
-    )
-  }
-  
+    </div>
+  )
+}
+
 export default ProfilePage
