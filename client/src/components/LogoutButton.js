@@ -15,7 +15,7 @@ const LogoutButton = ({ setUser }) => {
     }
   
     return (
-      <Button variant="none" className="text-butcher" onClick={handleClick}>LOGOUT</Button>
+      <Button variant="none" className="d-flex text-butcher p-0" onClick={handleClick}><FiLogOut /></Button>
     )
   }
   

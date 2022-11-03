@@ -35,7 +35,7 @@ const Search = () => {
                     <Form.Control type="text" placeholder="search" onChange={handleChange} />
                 </Form.Group>
                 <div className="text-muted py-3">
-                    {searchTerm ? (`Showing search results for: ${searchTerm}`) : 'Showing search results for: all items'} 
+                    {searchTerm ? (`Showing search results for: ${searchTerm}`) : 'Showing all items'} 
                 </div>
             </Form>
             {/* default searchResult is an empty array, which is always true */}
@@ -43,8 +43,6 @@ const Search = () => {
             <div>
                 <h1>No items found</h1>
             </div>}
-            
-
         </>
     )
 }
