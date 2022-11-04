@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { CartContext } from "../CartContext"
 import { useContext } from "react"
-import Catalogue from "./Catalogue"
 import { FaTrash } from "react-icons/fa"
 
 
@@ -15,11 +14,6 @@ const Cart = ({ items, quantity, id }) => {
     const cartItems = items?.filter((cartProduct) => {
         return cartProduct._id === id
     })
-
-    // //    Calculating total price of each product
-    //   const total = cartItems.reduce((acc, curr) => {
-    //         return acc + curr.price * quantity
-    //   }, 0)
 
 
     return (
@@ -80,14 +74,7 @@ const Cart = ({ items, quantity, id }) => {
                                 <Button variant="none" className="p-0"
                                     onClick={() => cart.deleteFromCart(item._id)}><FaTrash /></Button>
                             </Col>
-
-
-
                         </Row>
-
-
-                        {/* <p>Total: ${total}</p> */}
-
                     </Card>
                 )
             })}

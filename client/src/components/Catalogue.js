@@ -2,16 +2,16 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { AiOutlinePlus, AiOutlineShoppingCart, AiOutlineClose, AiFillEdit } from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiOutlineClose, AiFillEdit } from 'react-icons/ai'
 import { BiLike } from 'react-icons/bi'
-import { FaShoppingCart } from 'react-icons/fa'
+
 
 
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from "../CartContext"
 import { useContext, useState } from "react"
-import Cart from './Cart'
+
 
 
 const Catalogue = ({ items, setItems, user }) => {
@@ -21,7 +21,8 @@ const Catalogue = ({ items, setItems, user }) => {
     const cart = useContext(CartContext)
     const [item, setItem] = useState(false);
     // const getProductQuantity = cart.getProductQuantity(items._id)
-
+    console.log(items)
+    console.log(setItems)
 
     const handleLike = async (id) => {
         const res = await fetch(`/api/butcher/like/${id}`, { method: "PUT" })
@@ -33,7 +34,7 @@ const Catalogue = ({ items, setItems, user }) => {
             return data
         })
         console.log(newItem)
-        // setItem(newItem)
+        setItems(newItem)
     }
 
     const handleDelete = async (id) => {
@@ -56,18 +57,19 @@ const Catalogue = ({ items, setItems, user }) => {
                             <Card className='meat-card h-100 border-0 rounded-0' key={item._id}>
                                 {/* displays item.image if an imageURL exists */}
                                 {item.imageURL && (
-                                    <Link to={`/butcher/${item._id}`}>
-                                        <Card.Img className='h-100 rounded-0'
-                                            variant='top'
-                                            src={item.imageURL ? item.imageURL : ''}
-                                            alt={item.title}
-                                            style={{
-                                                objectFit: 'cover',
-                                            }}
-                                        />
-                                        {/* <Card.ImgOverlay className='p-0 d-md-none' style={{
-                                            zIndex: "100"
-                                        }}>
+                                    
+                                        <Link to={`/api/butcher/${item._id}`}>
+                                            <Card.Img className='h-100 rounded-0'
+                                                variant='top'
+                                                src={item.imageURL ? item.imageURL : ''}
+                                                alt={item.title}
+                                                style={{
+                                                    objectFit: 'cover',
+                                                }}
+                                            />
+                                        
+                                        
+                                        {/* <Card.ImgOverlay className='p-0 d-md-none'>
                                             <Card.Body className='p-0 d-flex justify-content-end'>
                                                 {user?.isAdmin === true ? (<>
                                                     <Link to={`/api/butcher/edit/${item._id}`} >
@@ -87,12 +89,12 @@ const Catalogue = ({ items, setItems, user }) => {
                                                         <Button variant='none' className="text-butcher fs-4" onClick={() => cart.addOneToCart(item._id)}>
                                                             <AiOutlineShoppingCart />
                                                         </Button>
-
                                                     </>
                                                 )}
                                             </Card.Body>
                                         </Card.ImgOverlay> */}
-                                    </Link>
+                                        
+                                        </Link>
                                 )}
                                 <Card.Body className='text-center'>
                                     {/* display a message when image is unavailable */}
@@ -118,10 +120,12 @@ const Catalogue = ({ items, setItems, user }) => {
                                         ) : (
                                             <>
                                                 {/* redirects users to the login page is not logged in */}
-                                                <Button variant='outline-butcher' className="fs-4" onClick={{user} ? (() => handleLike(item._id)) : (() => navigate('/butcher/login'))}>
+
+                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
                                                     <BiLike />
                                                 </Button>
-                                                <Button variant='outline-butcher' className="fs-4" onClick={{user} ? (() => cart.addOneToCart(item._id)) : (() => navigate('/butcher/login'))}>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => cart.addOneToCart(item._id)) : (() => navigate('/api/butcher/login'))}>
+
                                                     <AiOutlineShoppingCart />
                                                 </Button>
                                             </>
