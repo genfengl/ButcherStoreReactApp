@@ -13,7 +13,7 @@ const CreateMeat = ({ items, setItems }) => {
     const data = await res.json()
     console.log(items)
     setItems([...items, data])
-    navigate('/api/butcher')
+    navigate('/butcher')
   }
 
   return (
