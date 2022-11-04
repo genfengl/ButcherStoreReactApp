@@ -52,7 +52,7 @@ app.listen(PORT, () => {
   })
 
   app.get('*', (req, res) => {
-    res.sendFile(ButcherStoreReactApp + '/client/build/index.html')
+    res.sendFile(__dirname + '/client/build/index.html')
   })
   
 
