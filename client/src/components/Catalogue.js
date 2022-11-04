@@ -58,7 +58,7 @@ const Catalogue = ({ items, setItems, user }) => {
                                 {/* displays item.image if an imageURL exists */}
                                 {item.imageURL && (
                                     
-                                        <Link to={`/api/butcher/${item._id}`}>
+                                        <Link to={`/butcher/${item._id}`}>
                                             <Card.Img className='h-100 rounded-0'
                                                 variant='top'
                                                 src={item.imageURL ? item.imageURL : ''}
@@ -72,7 +72,7 @@ const Catalogue = ({ items, setItems, user }) => {
                                         {/* <Card.ImgOverlay className='p-0 d-md-none'>
                                             <Card.Body className='p-0 d-flex justify-content-end'>
                                                 {user?.isAdmin === true ? (<>
-                                                    <Link to={`/api/butcher/edit/${item._id}`} >
+                                                    <Link to={`/butcher/edit/${item._id}`} >
                                                         <Button variant='outline' className='text-primary fs-4'>
                                                             <AiFillEdit />
                                                         </Button>
@@ -121,10 +121,10 @@ const Catalogue = ({ items, setItems, user }) => {
                                             <>
                                                 {/* redirects users to the login page is not logged in */}
 
-                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/butcher/login'))}>
                                                     <BiLike />
                                                 </Button>
-                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => cart.addOneToCart(item._id)) : (() => navigate('/api/butcher/login'))}>
+                                                <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => cart.addOneToCart(item._id)) : (() => navigate('/butcher/login'))}>
 
                                                     <AiOutlineShoppingCart />
                                                 </Button>
