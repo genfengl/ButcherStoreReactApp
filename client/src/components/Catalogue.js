@@ -43,7 +43,7 @@ const Catalogue = ({ items, setItems, user }) => {
             return _items._id !== id
         })
         setItems(updatedItems)
-        navigate('/api/butcher')
+        navigate('/butcher')
     }
 
     return (
@@ -120,10 +120,12 @@ const Catalogue = ({ items, setItems, user }) => {
                                         ) : (
                                             <>
                                                 {/* redirects users to the login page is not logged in */}
+
                                                 <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => handleLike(item._id)) : (() => navigate('/api/butcher/login'))}>
                                                     <BiLike />
                                                 </Button>
                                                 <Button variant='outline-butcher' className="fs-4" onClick={user ? (() => cart.addOneToCart(item._id)) : (() => navigate('/api/butcher/login'))}>
+
                                                     <AiOutlineShoppingCart />
                                                 </Button>
                                             </>

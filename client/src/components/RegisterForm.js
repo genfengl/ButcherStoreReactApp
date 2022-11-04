@@ -35,7 +35,7 @@ const RegisterForm = () => {
         setError(data)
       } else if (res.status === 200) {
         setError(null)
-        navigate("/api/butcher/login")
+        navigate("/butcher/login")
       }
 
       setRegisterFields(initialState)

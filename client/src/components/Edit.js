@@ -47,7 +47,7 @@ const Edit = ({ items, setItems }) => {
       return data
     })
     setItems(updatedItems)
-    navigate('/api/butcher')
+    navigate('/butcher')
 
   }
 

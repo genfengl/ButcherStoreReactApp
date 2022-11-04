@@ -6,7 +6,7 @@ const CheckoutButton = () => {
     const cart = useContext(CartContext)
 
     const handleCheckoutClick = async () => {
-        const res = await fetch('/api/butcher/checkout', {
+        const res = await fetch('/butcher/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
