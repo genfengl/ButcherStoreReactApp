@@ -114,7 +114,7 @@ router.put('/api/butcher/like/:id', async (req, res) => {
   let meats = await Meat.findById(req.params.id)
   console.log(meats)
   const likesIndex = meats.likes.findIndex((like) => {
-    return like.toString() === req.user.id
+    return like?.toString() === req.user.id
   })
   if (likesIndex >= 0) {
     meats.likes.splice(likesIndex, 1)

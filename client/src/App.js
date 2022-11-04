@@ -81,17 +81,17 @@ function App() {
       <Container>
         <Routes>
           <Route path='/api/butcher' element={<Home items={items} setItems={setItems} user={user} />} />
-          <Route path='/api/butcher/beef' element={<Beef items={items} />} />
-          <Route path='/api/butcher/pork' element={<Pork items={items} />} />
-          <Route path='/api/butcher/poultry' element={<Poultry items={items} />} />
-          <Route path='/api/butcher/lamb' element={<Lamb items={items} />} />
-          <Route path='/api/butcher/seafood' element={<Seafood items={items} />} />
+          <Route path='/api/butcher/beef' element={<Beef items={items} user={user} />} />
+          <Route path='/api/butcher/pork' element={<Pork items={items} user={user} />} />
+          <Route path='/api/butcher/poultry' element={<Poultry items={items} user={user} />} />
+          <Route path='/api/butcher/lamb' element={<Lamb items={items} user={user} />} />
+          <Route path='/api/butcher/seafood' element={<Seafood items={items} user={user} />} />
           <Route path='/api/butcher/:id' element={<Show user={user} />} />
           <Route path='/api/butcher/search' element={<Search />} />
           <Route path='/api/butcher/edit/:id' element={<Edit items={items} setItems={setItems} />} />
           {/* unsure below route does anything if no user loggedin? */}
           <Route path='/api/butcher/add' element={items.length && <CreateMeat items={items} setItems={setItems}/>} />
-          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user} setUser={setUser}/>} />}
+          if (user) {<Route path='/api/butcher/profile' element={<ProfilePage user={user} setUser={setUser} setItems={setItems} />} />}
           else {<Route path='/api/butcher/login' element={<LoginPage setUser={setUser} />} />}
           <Route path='/api/butcher/register' element={<RegisterPage />} />
           <Route path='/api/butcher/success' element={<SuccessPage user={user} />} />

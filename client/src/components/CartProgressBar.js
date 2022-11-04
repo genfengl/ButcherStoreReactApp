@@ -1,6 +1,5 @@
 import ProgressBar from "react-bootstrap/ProgressBar"
 import Container from "react-bootstrap/Container"
-import Cart from "./Cart"
 
 const CartProgressBar = ({currentPrice}) => {
     return (

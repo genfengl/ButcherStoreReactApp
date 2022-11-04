@@ -55,7 +55,7 @@ const ProfilePage = ({ user, setUser }) => {
 
 
       {/* {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)} */}
-      <Catalogue items={likedItems} />
+      <Catalogue items={likedItems} user={user} />
       <div className='fs-3 fw-bold text-start text-butcher'>Purchase History</div>
       <ul>
         {/* {imported purchase log? / purchaseLog.map((purchase) => {
