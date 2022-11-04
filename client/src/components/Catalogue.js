@@ -109,7 +109,7 @@ const Catalogue = ({ items, setItems, user }) => {
                                     {/* button for add to cart */}
                                     <div className='d-flex justify-content-around'>
                                         {user?.isAdmin === true ? (<>
-                                            <Link to={`/api/butcher/edit/${item._id}`} >
+                                            <Link to={`/butcher/edit/${item._id}`} >
                                                 <Button variant='outline-primary' className='fs-4'>
                                                     <AiFillEdit />
                                                 </Button></Link>

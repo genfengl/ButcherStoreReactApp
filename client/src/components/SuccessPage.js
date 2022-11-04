@@ -10,7 +10,7 @@ const SuccessPage = ({ user }) => {
             </div>
             <div className="fs-3 lead text-center">We have successfully collected your credit card information. </div>
             <div className="fs-3 lead text-center">Enjoy the meat!</div>
-            <Button as={Link} to="/api/butcher/" variant="outline-butcher" className="mt-5">Back to Home Page</Button>
+            <Button as={Link} to="/butcher/" variant="outline-butcher" className="mt-5">Back to Home Page</Button>
         </div>
     )
 }

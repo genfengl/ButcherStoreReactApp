@@ -31,38 +31,38 @@ const Header = ({ handleOffcanvasNavShow, handleOffcanvasCartShow, user, setUser
                 <Navbar.Collapse id='basic-navbar-nav' >
                     <Nav className='order-md-2 fs-6'>
                         
-                        <Nav.Link as={Link} to='/api/butcher/beef' >
+                        <Nav.Link as={Link} to='/butcher/beef' >
                             BEEF
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/pork'>
+                        <Nav.Link as={Link} to='/butcher/pork'>
                             PORK
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/poultry'>
+                        <Nav.Link as={Link} to='/butcher/poultry'>
                             POULTRY
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/lamb'>
+                        <Nav.Link as={Link} to='/butcher/lamb'>
                             LAMB
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/api/butcher/seafood'>
+                        <Nav.Link as={Link} to='/butcher/seafood'>
                             SEAFOOD
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Brand className='fw-bold fs-3 order-md-first ms-4 me-0 mx-md-3' as={Link} to='/api/butcher'>
+                <Navbar.Brand className='fw-bold fs-3 order-md-first ms-4 me-0 mx-md-3' as={Link} to='/butcher'>
                     <img src="/logo.png" style={{
                         height:'48px'
                     }}/>
                 </Navbar.Brand>
                 <Nav className='d-flex flex-row gap-1 me-3 order-last align-items-center'>
-                    <Nav.Link as={Link} to='/api/butcher/search' className="text-light d-flex">
+                    <Nav.Link as={Link} to='/butcher/search' className="text-light d-flex">
                         <FaSearch />
                     </Nav.Link>
-                    {user?.isAdmin && <Nav.Link as={Link} to="/api/butcher/add" className='text-light d-flex'><FaPlus /></Nav.Link>}
-                    {user ? (<Nav.Link className="d-none d-md-flex text-light align-items-center gap-1" as={Link} to='/api/butcher/profile'>
+                    {user?.isAdmin && <Nav.Link as={Link} to="/butcher/add" className='text-light d-flex'><FaPlus /></Nav.Link>}
+                    {user ? (<Nav.Link className="d-none d-md-flex text-light align-items-center gap-1" as={Link} to='/butcher/profile'>
                         <FaUser />
                         {user.username}
                     </Nav.Link>) :
-                        (<Nav.Link className="d-none d-md-flex text-light align-items-center gap-1" as={Link} to='/api/butcher/login'>
+                        (<Nav.Link className="d-none d-md-flex text-light align-items-center gap-1" as={Link} to='/butcher/login'>
                             <FaUser />
                         </Nav.Link>)}
                     {/* <Nav.Link className="d-none d-md-block" as={Link} to='/api/butcher'>
