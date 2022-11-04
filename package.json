@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "NODE_ENV=development npm i react-app-rewired && npm i crypto-browserify && npm i assert && npm i buffer && npm i https-browserify && npm i os-browserify && npm i process && npm i stream-browserify && npm i stream-http && npm i url && cd client && npm i && npm run build",
+    "heroku-postbuild": "NODE_ENV=development npm i --include=dev && npm i react-app-rewired && npm i crypto-browserify && npm i assert && npm i buffer && npm i https-browserify && npm i os-browserify && npm i process && npm i stream-browserify && npm i stream-http && npm i url && cd client && npm i --include=dev && npm i && npm run build",
     "start": "node app.js"
   },
   "repository": {
