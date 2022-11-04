@@ -11,7 +11,7 @@ const LogoutButton = ({ setUser }) => {
       const data = await res.json()
       console.log(data)
       setUser(null)
-      navigate('/api/butcher')
+      navigate('/butcher')
     }
   
     return (
