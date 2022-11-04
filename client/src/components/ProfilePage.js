@@ -1,6 +1,5 @@
 //need to pass user data for heading / etc - call api fetch here? - not possible to pass directly from internal models
 import { useEffect, useState } from "react"
-import { Link } from 'react-router-dom'
 import Catalogue from "./Catalogue"
 import LogoutButton from "./LogoutButton"
 

@@ -56,7 +56,7 @@ const Catalogue = ({ items, setItems, user }) => {
                             <Card className='meat-card h-100 border-0 rounded-0' key={item._id}>
                                 {/* displays item.image if an imageURL exists */}
                                 {item.imageURL && (
-                                    <Link to={`/api/butcher/${item._id}`}>
+                                    <Link to={`/butcher/${item._id}`}>
                                         <Card.Img className='h-100 rounded-0'
                                             variant='top'
                                             src={item.imageURL ? item.imageURL : ''}
@@ -107,7 +107,7 @@ const Catalogue = ({ items, setItems, user }) => {
                                     {/* button for add to cart */}
                                     <div className='d-flex justify-content-around'>
                                         {user?.isAdmin === true ? (<>
-                                            <Link to={`/api/butcher/edit/${item._id}`} >
+                                            <Link to={`/butcher/edit/${item._id}`} >
                                                 <Button variant='outline-primary' className='fs-4'>
                                                     <AiFillEdit />
                                                 </Button></Link>
