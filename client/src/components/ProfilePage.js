@@ -1,5 +1,6 @@
 //need to pass user data for heading / etc - call api fetch here? - not possible to pass directly from internal models
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 import Catalogue from "./Catalogue"
 import LogoutButton from "./LogoutButton"
 
@@ -54,13 +55,13 @@ const ProfilePage = ({ user, setUser }) => {
 
 
       {/* {(user.isAdmin && <p>You have admin access to edit and delete available stock</p>)} */}
-      <Catalogue items={likedItems} user={user} />
-      {/* <div className='fs-3 fw-bold text-start text-butcher'>Purchase History */}
-      {/* <ul> */}
+      <Catalogue items={likedItems} user={user} setItems={setItems} />
+      <div className='fs-3 fw-bold text-start text-butcher'>Purchase History</div>
+      <ul>
         {/* {imported purchase log? / purchaseLog.map((purchase) => {
           return <li>{purchase.title} for {purchase.totalCost}</li> //totalCost currently placeholder name while we work out getTotalCost cart functionality
         })} */}
-      {/* </ul></div> */}
+      </ul>
     </div>
   )
 }
