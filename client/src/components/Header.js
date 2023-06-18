@@ -1,16 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import LogoutButton from "./LogoutButton";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Popover from "react-bootstrap/Popover";
 import { FaSearch, FaUser, FaShoppingCart, FaPlus } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Header = ({
   handleOffcanvasNavShow,
